@@ -1,14 +1,15 @@
 
-// UNCOMMENT TO RUN
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-//const CopyWebpackPlugin = require('copy-webpack-plugin');
-
 const webpack = require('webpack');
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+
+// UNCOMMENT TO RUN
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = env => ({
   devtool: env === 'production' ? 'source-map' : 'cheap-eval-source-map',
