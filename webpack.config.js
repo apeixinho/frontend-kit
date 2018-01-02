@@ -1,11 +1,9 @@
-
-const webpack = require('webpack');
+//const webpack = require('webpack');
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 
 // UNCOMMENT TO RUN
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
