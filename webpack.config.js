@@ -11,15 +11,16 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = env => ({
   devtool: env === 'production' ? 'source-map' : 'cheap-eval-source-map',
-  devServer: env === 'production' ? {} :
-  {
+  devServer: env === 'production' ? {} : {
     contentBase: path.resolve(__dirname, './dist'), // A directory or URL to serve HTML content from.
     historyApiFallback: true, // fallback to /index.html for Single Page Applications.
     inline: true, // inline mode (set to false to disable including client scripts (like livereload)
     compress: true,
     open: true // open default browser while launching
   },
-  entry: './src/index.js',
+  entry: ['./index.js',
+    './ejs/index.ejs',
+  ],
   output: {
     filename: env === 'production' ? '[name].[chunkhash].bundle.js' : '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -59,6 +60,9 @@ module.exports = env => ({
         options: {
           limit: 10000
         }
+      }, {
+        test: /\.ejs$/,
+        loader: 'ejs-compiled-loader'
       }
     ]
   },
@@ -68,7 +72,8 @@ module.exports = env => ({
     }),
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'public', 'index.html'),
+      title: 'homepage ' + env,
+      template: './src/ejs/index.ejs'
     }),
     new CleanWebpackPlugin(['dist'])
   ]
