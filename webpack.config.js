@@ -70,8 +70,11 @@ module.exports = env => ({
     new UglifyJSPlugin({
       sourceMap: true
     }),
+    // about importing favicon
+    // https://github.com/coryhouse/react-slingshot/issues/128
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
+      favicon: 'src/images/favicon.ico',
       title: 'homepage ' + env,
       template: './src/ejs/index.ejs'
     }),
