@@ -72,6 +72,8 @@ module.exports = env => ({
     }),
     // about importing favicon
     // https://github.com/coryhouse/react-slingshot/issues/128
+    // about ejs loading
+    //https://github.com/takahiro-saeki/webpack2-web-design.git
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       favicon: 'src/images/favicon.ico',
