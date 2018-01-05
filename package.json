@@ -9,11 +9,11 @@
     "node": "^8.9.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf dist",
-    "build": "webpack --progress --config webpack.config.dev.js",
-    "build:prod": "webpack -p --config webpack.config.prod.js --progress",
-    "start": "webpack-dev-server --config webpack.config.dev.js"
+    "clean": "rimraf dist/*",
+    "build": "./node_modules/.bin/webpack --progress",
+    "build:prod": "./node_modules/.bin/webpack --progress -p --env production",
+    "start": "./node_modules/.bin/webpack-dev-server",
+    "start:prod": "./node_modules/.bin/webpack-dev-server -p --env production"
   },
   "browserslist": [
     "last 2 Chrome versions",
