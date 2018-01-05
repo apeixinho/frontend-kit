@@ -1,5 +1,5 @@
-@import 'common/base';
-@import 'common/card';
+@import 'common/_base.css';
+@import 'common/_card.css';
 
 .nav-basic {
   z-index: 100;

@@ -2,8 +2,12 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// const DIST_DIR = path.resolve(__dirname, 'dist');
-// const CLIENT_DIR = path.resolve(__dirname, 'src');
+const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
+  minimize: false,
+  debug: true,
+  noInfo: true // set to false to see a list of every file being bundled.
+
+});
 
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   title: 'homepage',
@@ -17,11 +21,22 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
   DEBUG: false,
 });
 
-module.exports = {
+const devConfig = module.exports = {
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'), // directory or URL to serve HTML content from.
+    historyApiFallback: true, // fallback to /index.html for Single Page Applications.
+    compress: true, // enable gzip compression
+    open: true, // open default browser while launching
+    inline: true, // inline mode (set to false to disable including client scripts (like livereload)
+    hot: true,
+    stats: { colors: true }
+  },
   target: 'web',
   context: path.resolve(__dirname, 'src'),
   entry: [
     './index.js',
+    './vendor/',
     './ejs/index.ejs'
   ],
   output: {
@@ -79,7 +94,7 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 10000,
+            limit: 8192,
             mimetype: 'application/font-woff',
             name: '[name].[ext]'
           }
@@ -90,7 +105,7 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 10000,
+            limit: 8192,
             mimetype: 'application/octet-stream',
             name: '[name].[ext]'
           }
@@ -125,7 +140,11 @@ module.exports = {
     ],
   },
   plugins: [
+    loaderOptionsPluginConfig,
     htmlWebpackPluginConfig,
     environmentPluginConfig,
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };
+
+module.exports = devConfig;
