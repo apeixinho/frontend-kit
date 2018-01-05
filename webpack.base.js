@@ -2,8 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const DIST_DIR = path.resolve(__dirname, 'dist');
-const CLIENT_DIR = path.resolve(__dirname, 'src');
+// const DIST_DIR = path.resolve(__dirname, 'dist');
+// const CLIENT_DIR = path.resolve(__dirname, 'src');
 
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   title: 'homepage',
@@ -18,17 +18,16 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
 });
 
 module.exports = {
-  context: CLIENT_DIR,
+  context:  path.resolve(__dirname, 'src'),
   target: 'web',
   entry: ['./src/index'],
   output: {
     publicPath: '/',
-    path: DIST_DIR,
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
@@ -65,8 +64,50 @@ module.exports = {
         ]
       },
       {
+        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            name: '[name].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/font-woff',
+            name: '[name].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'application/octet-stream',
+            name: '[name].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            mimetype: 'image/svg+xml',
+            name: '[name].[ext]'
+          }
+        }]
+      },
+      {
         // Load all images as base64 encoding if they are smaller than 8192 bytes
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(jpe?g|png|gif|ico)$/i,
         use: [{
           loader: 'url-loader',
           options: {
