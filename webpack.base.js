@@ -7,8 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   title: 'homepage',
-  template: './src/ejs/index.ejs',
-  favicon: './src/images/favicon.ico',
+  template: './ejs/index.ejs',
+  favicon: './images/favicon.ico',
   inject: true
 });
 
@@ -18,11 +18,13 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
 });
 
 module.exports = {
-  context:  path.resolve(__dirname, 'src'),
   target: 'web',
-  entry: ['./src/index'],
+  context: path.resolve(__dirname, 'src'),
+  entry: [
+    './index.js',
+    './ejs/index.ejs'
+  ],
   output: {
-    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
   },
@@ -116,6 +118,9 @@ module.exports = {
             limit: 8192
           }
         }]
+      }, {
+        test: /\.ejs$/,
+        loader: 'ejs-compiled-loader'
       }
     ],
   },

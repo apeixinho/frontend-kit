@@ -8,8 +8,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist/*",
-    "build": "webpack",
-    "build:prod": "webpack -p --config webpack.prod.js",
+    "build": "webpack --progress --config webpack.dev.js",
+    "build:prod": "webpack -p --config webpack.prod.js --progress",
     "start": "webpack-dev-server --config webpack.dev.js"
   },
   "browserslist": [
