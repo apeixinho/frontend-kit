@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+
 const loaderOptionsPluginConfig = new webpack.loaderOptionsPluginConfig({
   minimize: true,
   debug: false,
@@ -81,6 +82,17 @@ const prodConfig = module.exports = {
           fallback: 'style-loader'
         }),
       },
+      // font-awesome
+      // {
+      //   test: /font-awesome\.config\.js/,
+      //   use: [{
+      //       loader: 'style-loader'
+      //     },
+      //     {
+      //       loader: 'font-awesome-loader'
+      //     }
+      //   ]
+      // },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
         use: [{

@@ -10,10 +10,10 @@
   },
   "scripts": {
     "clean": "rimraf dist/*",
-    "build": "./node_modules/.bin/webpack --progress",
-    "build:prod": "./node_modules/.bin/webpack --progress -p --env production",
-    "start": "./node_modules/.bin/webpack-dev-server",
-    "start:prod": "./node_modules/.bin/webpack-dev-server -p --env production"
+    "build": "webpack --progress --config webpack.config.dev.js",
+    "build:prod": "webpack --progress -p --env production --config webpack.config.prod.js",
+    "start": "webpack-dev-server",
+    "start:prod": "webpack-dev-server -p --env production --config webpack.config.prod.js"
   },
   "browserslist": [
     "last 2 Chrome versions",
@@ -34,6 +34,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
     "flexboxgrid": "^6.3.1",
+    "font-awesome": "^4.7.0",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.10",
@@ -42,8 +43,7 @@
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7",
-    "webpack-merge": "^4.1.1"
+    "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0"

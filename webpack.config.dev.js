@@ -26,17 +26,19 @@ const devConfig = module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'), // directory or URL to serve HTML content from.
     historyApiFallback: true, // fallback to /index.html for Single Page Applications.
+    port: 4000,
     compress: true, // enable gzip compression
     open: true, // open default browser while launching
     inline: true, // inline mode (set to false to disable including client scripts (like livereload)
     hot: true,
-    stats: { colors: true }
+    stats: {
+      colors: true
+    }
   },
   target: 'web',
   context: path.resolve(__dirname, 'src'),
   entry: [
     './index.js',
-    './vendor/',
     './ejs/index.ejs'
   ],
   output: {
@@ -80,6 +82,17 @@ const devConfig = module.exports = {
           // Please note we are not running postcss here
         ]
       },
+      // font-awesome
+      // {
+      //   test: /font-awesome\.config\.js/,
+      //   use: [{
+      //       loader: 'style-loader'
+      //     },
+      //     {
+      //       loader: 'font-awesome-loader'
+      //     }
+      //   ]
+      // },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
         use: [{

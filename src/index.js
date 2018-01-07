@@ -1,9 +1,6 @@
-// require('./styles/index.scss');
-
 import './styles/style.css';
+import './styles/index.scss';
 import date from './scripts/sample';
-// eslint-disable-next-line
-import flex from 'flexboxgrid';
 
 
 date('time')
