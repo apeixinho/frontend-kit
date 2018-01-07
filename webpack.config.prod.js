@@ -70,13 +70,6 @@ const prodConfig = module.exports = {
               }
             },
             {
-              // Runs compiled CSS through postcss for vendor prefixing
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            {
               // compiles Sass to CSS
               loader: 'sass-loader',
               options: {
@@ -84,7 +77,13 @@ const prodConfig = module.exports = {
                 sourceMap: true,
                 sourceMapContents: true
               }
-            }
+            }, {
+              // Runs compiled CSS through postcss for vendor prefixing
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true
+              }
+            },
           ],
           fallback: 'style-loader'
         }),
@@ -94,7 +93,7 @@ const prodConfig = module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            name: '[name].[ext]'
+            name: 'font/[name].[ext]'
           }
         }]
       },
@@ -105,7 +104,7 @@ const prodConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/font-woff',
-            name: '[name].[ext]'
+            name: 'font/[name].[ext]'
           }
         }]
       },
@@ -116,7 +115,7 @@ const prodConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/octet-stream',
-            name: '[name].[ext]'
+            name: 'font/[name].[ext]'
           }
         }]
       },
@@ -127,7 +126,7 @@ const prodConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'image/svg+xml',
-            name: '[name].[ext]'
+            name: 'font/[name].[ext]'
           }
         }]
       },
@@ -161,8 +160,8 @@ const prodConfig = module.exports = {
     ],
   },
   plugins: [
-    loaderOptionsPluginConfig,
     environmentPluginConfig,
+    loaderOptionsPluginConfig,
     new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     new ExtractTextPlugin('styles.[contentHash].css', {
       allChunks: true
