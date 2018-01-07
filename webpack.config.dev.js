@@ -157,12 +157,13 @@ const devConfig = module.exports = {
   plugins: [
     environmentPluginConfig,
     loaderOptionsPluginConfig,
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+    }),
     new GoogleFontsPlugin({
       fonts: [{
-          family: "Roboto"
-        },
-        {
-          family: "Ubuntu"
+          family: "PT Sans"
         }
       ]
     }),
