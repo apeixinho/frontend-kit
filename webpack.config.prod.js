@@ -1,7 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const loaderOptionsPluginConfig = new webpack.loaderOptionsPluginConfig({
+
+const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: true,
   debug: false,
   noInfo: true // set to false to see a list of every file being bundled.
@@ -10,7 +16,7 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
   NODE_ENV: 'production',
   DEBUG: false,
 });
-const htmlWebpackPluginConfig = new webpack.HtmlWebpackPlugin({
+const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   title: 'homepage',
   template: './ejs/index.ejs',
   favicon: './images/favicon.ico',
@@ -55,7 +61,7 @@ const prodConfig = module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: new webpack.ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           use: [{
               // translates CSS into CommonJS
               loader: 'css-loader',
@@ -157,11 +163,11 @@ const prodConfig = module.exports = {
   plugins: [
     loaderOptionsPluginConfig,
     environmentPluginConfig,
-    new webpack.CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
-    new webpack.ExtractTextPlugin('styles.[contentHash].css', {
+    new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
+    new ExtractTextPlugin('styles.[contentHash].css', {
       allChunks: true
     }),
-    new webpack.OptimizeCssAssetsPlugin({
+    new OptimizeCssAssetsPlugin({
       cssProcessorOptions: {
         map: {
           inline: false,
@@ -178,7 +184,7 @@ const prodConfig = module.exports = {
     //   name: 'vendor'
     // }),
     htmlWebpackPluginConfig,
-    new webpack.optimize.UglifyJSPlugin({
+    new UglifyJSPlugin({
       sourceMap: true,
       output: {
         comments: false

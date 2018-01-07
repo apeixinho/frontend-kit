@@ -89,7 +89,6 @@ const devConfig = module.exports = {
           loader: 'url-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'fonts/'
           }
         }]
       },
@@ -101,7 +100,6 @@ const devConfig = module.exports = {
             limit: 8192,
             mimetype: 'application/font-woff',
             name: '[name].[ext]',
-            outputPath: 'fonts/'
           }
         }]
       },
@@ -113,7 +111,6 @@ const devConfig = module.exports = {
             limit: 8192,
             mimetype: 'application/octet-stream',
             name: '[name].[ext]',
-            outputPath: 'fonts/'
           }
         }]
       },
