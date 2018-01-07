@@ -1,2 +1,2 @@
 # frontend-kit
-A frontend kit from several perspectives
+A frontend kit 
