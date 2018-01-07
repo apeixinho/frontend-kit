@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
@@ -159,7 +157,6 @@ const devConfig = module.exports = {
   plugins: [
     environmentPluginConfig,
     loaderOptionsPluginConfig,
-    new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     // new GoogleFontsPlugin({
     //   fonts: [{
     //       family: "Roboto"
@@ -169,9 +166,6 @@ const devConfig = module.exports = {
     //     }
     //   ]
     // }),
-    new ExtractTextPlugin('styles.css', {
-      allChunks: true
-    }),
     htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
   ],
