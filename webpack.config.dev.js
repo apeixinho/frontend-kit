@@ -89,7 +89,7 @@ const devConfig = module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            name: '[name].[ext]',
+            name: 'font/[name].[ext]',
           }
         }]
       },
@@ -100,7 +100,7 @@ const devConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/font-woff',
-            name: '[name].[ext]',
+            name: 'font/[name].[ext]',
           }
         }]
       },
@@ -111,7 +111,7 @@ const devConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/octet-stream',
-            name: '[name].[ext]',
+            name: 'font/[name].[ext]',
           }
         }]
       },
@@ -122,7 +122,7 @@ const devConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'image/svg+xml',
-            name: '[name].[ext]'
+            name: 'font/[name].[ext]'
           }
         }]
       },
