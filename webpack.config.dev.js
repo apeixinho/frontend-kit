@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
@@ -38,7 +39,7 @@ const devConfig = module.exports = {
   target: 'web',
   context: path.resolve(__dirname, 'src'),
   entry: [
-    'font-awesome/scss/font-awesome.scss',
+    //'font-awesome/scss/font-awesome.scss',
     './index.js',
     './ejs/index.ejs'
   ],
@@ -140,21 +141,32 @@ const devConfig = module.exports = {
       // font-awesome
       {
         test: /font-awesome\.config\.js/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'font-awesome-loader' }
+        use: [{
+            loader: 'style-loader'
+          },
+          {
+            loader: 'font-awesome-loader'
+          }
         ]
-      }
-      ,{
+      }, {
         test: /\.ejs$/,
         loader: 'ejs-compiled-loader'
       }
     ],
   },
   plugins: [
-    loaderOptionsPluginConfig,
-    htmlWebpackPluginConfig,
     environmentPluginConfig,
+    loaderOptionsPluginConfig,
+    new GoogleFontsPlugin({
+      fonts: [{
+          family: "Roboto"
+        },
+        {
+          family: "Montserrat"
+        }
+      ]
+    }),
+    htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
