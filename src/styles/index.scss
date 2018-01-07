@@ -1,13 +1,3 @@
-@import 'colors';
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
 
-body {
-  background-color: $primary-color;
-}
-#root {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

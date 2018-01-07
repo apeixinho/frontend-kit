@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+
+
+  <div class="container">
+
+    <%- include src/ejs/common/header -%>
+
+      <div class="wrapper">
+        <aside class="sidebar">
+
+          <h3>Recent Posts</h3>
+          <ul>
+            <li>
+              <a href="#">Post One</a>
+            </li>
+            <li>
+              <a href="#">Post Two</a>
+            </li>
+            <li>
+              <a href="#">Post Three</a>
+            </li>
+            <li>
+              <a href="#">Post Four</a>
+            </li>
+            <li>
+              <a href="#">Post Five</a>
+            </li>
+          </ul>
+        </aside>
+        <%- include src/ejs/common/main -%>
+      </div>
+
+      <%- include src/ejs/common/footer -%>
+  </div>
+
+</body>
+
+<!--
+    The htmlWebpackPlugin will parse the logic below so that trackJS is only added to the production version of index.html (since only webpack.config.prod.js provides the trackJS token)
+    This is an example of how to add features to index.html for only one environment.
+    To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token in /webpack.config.prod.js on line 55.
+   -->
+<!-- <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+    <script>window._trackJs = {token: '<%= htmlWebpackPlugin.options.trackJSToken %>'};</script>
+    <script src="https://d2zah9y47r7bi2.cloudfront.net/releases/current/tracker.js"></script>
+    <% } %> -->
+
+</html>
