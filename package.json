@@ -9,7 +9,7 @@
     "node": "^8.9.3"
   },
   "scripts": {
-    "clean": "rimraf dist/*",
+    "clean": "rimraf dist",
     "build": "webpack --progress --config webpack.config.dev.js",
     "build:prod": "webpack --progress -p --env production --config webpack.config.prod.js",
     "start": "webpack-dev-server --config webpack.config.dev.js",

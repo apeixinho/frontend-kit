@@ -36,6 +36,7 @@ const prodConfig = module.exports = {
   target: 'web',
   context: path.resolve(__dirname, 'src'),
   entry: [
+    'font-awesome/scss/font-awesome.scss',
     './index.js',
     './ejs/index.ejs'
   ],
@@ -82,17 +83,6 @@ const prodConfig = module.exports = {
           fallback: 'style-loader'
         }),
       },
-      // font-awesome
-      // {
-      //   test: /font-awesome\.config\.js/,
-      //   use: [{
-      //       loader: 'style-loader'
-      //     },
-      //     {
-      //       loader: 'font-awesome-loader'
-      //     }
-      //   ]
-      // },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
         use: [{
@@ -146,7 +136,19 @@ const prodConfig = module.exports = {
             limit: 8192
           }
         }]
-      }, {
+      },
+      // font-awesome
+      {
+        test: /font-awesome\.config\.js/,
+        use: [{
+            loader: 'style-loader'
+          },
+          {
+            loader: 'font-awesome-loader'
+          }
+        ]
+      },
+      {
         test: /\.ejs$/,
         loader: 'ejs-compiled-loader'
       }
