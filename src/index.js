@@ -2,7 +2,6 @@ import './styles/style.css';
 import './styles/index.scss';
 import date from './scripts/sample';
 
-
 date('time')
 
 

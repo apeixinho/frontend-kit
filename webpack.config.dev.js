@@ -38,6 +38,7 @@ const devConfig = module.exports = {
   target: 'web',
   context: path.resolve(__dirname, 'src'),
   entry: [
+    'font-awesome/scss/font-awesome.scss',
     './index.js',
     './ejs/index.ejs'
   ],
@@ -82,23 +83,13 @@ const devConfig = module.exports = {
           // Please note we are not running postcss here
         ]
       },
-      // font-awesome
-      // {
-      //   test: /font-awesome\.config\.js/,
-      //   use: [{
-      //       loader: 'style-loader'
-      //     },
-      //     {
-      //       loader: 'font-awesome-loader'
-      //     }
-      //   ]
-      // },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
         use: [{
           loader: 'url-loader',
           options: {
-            name: '[name].[ext]'
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
           }
         }]
       },
@@ -109,7 +100,8 @@ const devConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/font-woff',
-            name: '[name].[ext]'
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
           }
         }]
       },
@@ -120,7 +112,8 @@ const devConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/octet-stream',
-            name: '[name].[ext]'
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
           }
         }]
       },
@@ -146,7 +139,16 @@ const devConfig = module.exports = {
             limit: 8192
           }
         }]
-      }, {
+      },
+      // font-awesome
+      {
+        test: /font-awesome\.config\.js/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'font-awesome-loader' }
+        ]
+      }
+      ,{
         test: /\.ejs$/,
         loader: 'ejs-compiled-loader'
       }
