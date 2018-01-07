@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
@@ -157,15 +157,15 @@ const devConfig = module.exports = {
   plugins: [
     environmentPluginConfig,
     loaderOptionsPluginConfig,
-    // new GoogleFontsPlugin({
-    //   fonts: [{
-    //       family: "Roboto"
-    //     },
-    //     {
-    //       family: "Montserrat"
-    //     }
-    //   ]
-    // }),
+    new GoogleFontsPlugin({
+      fonts: [{
+          family: "Roboto"
+        },
+        {
+          family: "Ubuntu"
+        }
+      ]
+    }),
     htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
   ],
