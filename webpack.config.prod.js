@@ -30,8 +30,8 @@ const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
     removeEmptyAttributes: true,
     removeStyleLinkTypeAttributes: true,
     keepClosingSlash: true,
-    minifyJS: true,
-    minifyCSS: true,
+    minifyJS: false,
+    minifyCSS: false,
     minifyURLs: true
   },
   // Properties you define here are available in index.html
@@ -170,9 +170,8 @@ const prodConfig = module.exports = {
     // }),
     new GoogleFontsPlugin({
       fonts: [{
-          family: "PT Sans"
-        },
-      ],
+        family: "PT Sans"
+      }, ],
       path: "fonts/",
       filename: "fonts/fonts.css"
     }),
@@ -195,13 +194,11 @@ const prodConfig = module.exports = {
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: 'vendor'
     // }),
-    htmlWebpackPluginConfig,
     new UglifyJSPlugin({
-      sourceMap: true,
-      output: {
-        comments: false
-      }
+      parallel: true,
+      sourceMap: true
     }),
+    htmlWebpackPluginConfig,
   ]
 };
 
