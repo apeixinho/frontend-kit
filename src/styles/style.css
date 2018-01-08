@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+/* @import url(https://fonts.googleapis.com/css?family=PT+Sans); */
 
 *,
 *:before,
@@ -47,7 +47,6 @@ section {
   position: absolute;
   top: 55%;
   width: 100%;
-  -webkit-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
   text-align: center;
   opacity: 0;
@@ -69,14 +68,10 @@ section {
   color: #3d3d3d;
   font-size: 3em;
   margin-bottom: 20px;
-  -webkit-transform: translateY(-50px) scale(0);
   transform: translateY(-50px) scale(0);
-  -webkit-transition: transform .7s;
-  -moz-transition: transform .7s;
   transition: transform .7s;
 }
 .about-myself .content .aboutTitleVisible {
-  -webkit-transform: translateY(0px) scale(1);
   transform: translateX(0px) scale(1);
 }
 .about-myself .content p span {
@@ -117,7 +112,6 @@ section {
   position: absolute;
   left: 50%;
   top: 0;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 20px;
   height: 20px;
@@ -135,8 +129,6 @@ section {
   width: calc(100vw - 100px);
   padding: 20px;
   text-align: center;
-  -webkit-border-radius: 0 5px 5px;
-  -moz-border-radius: 0 5px 5px;
   border-radius: 0 5px 5px;
 }
 .experience .content ul li .experience-content h2 {
@@ -483,7 +475,6 @@ section {
     overflow: hidden;
   }
   .portfolio .content .projects .project:hover .project-image {
-    -webkit-transform: scale(0.5);
     transform: scale(0.5);
   }
   .portfolio .content .projects .project:hover .project-title, .portfolio .content .projects .project:hover .project-description {
@@ -495,9 +486,7 @@ section {
     top: 0;
     right: 0;
     bottom: 0;
-    -webkit-transition: transform .5s ease;
     transition: transform .5s ease;
-    -webkit-transform-origin: left top;
     transform-origin: left top;
     z-index: 3;
     overflow: hidden;
@@ -513,7 +502,6 @@ section {
     position: absolute;
     height: 50%;
     opacity: 0;
-    -webkit-transition: opacity .3s linear;
     transition: opacity .3s linear;
     overflow: hidden;
   }
