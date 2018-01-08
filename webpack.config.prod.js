@@ -176,7 +176,7 @@ const prodConfig = module.exports = {
       path: "fonts/",
       filename: "fonts/fonts.css"
     }),
-    new ExtractTextPlugin('fonts/styles.[contentHash].css', {
+    new ExtractTextPlugin('styles/styles.[contentHash].css', {
       allChunks: true
     }),
     new OptimizeCssAssetsPlugin({
