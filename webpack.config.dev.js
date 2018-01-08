@@ -166,6 +166,9 @@ const devConfig = module.exports = {
       path: "fonts/",
       filename: "fonts/fonts.css"
     }),
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true
+    }),
     htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
   ],
