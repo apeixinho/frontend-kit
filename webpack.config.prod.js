@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
@@ -38,7 +39,7 @@ const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   // trackJSToken: 'INSERT YOUR TOKEN HERE'
 });
 const prodConfig = module.exports = {
-  devtool: 'source-map',
+  devtool: 'hidden-source-map',
   target: 'web',
   context: path.resolve(__dirname, 'src'),
   entry: [
@@ -93,7 +94,7 @@ const prodConfig = module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            name: 'font/[name].[ext]'
+            name: 'fonts/[name].[ext]'
           }
         }]
       },
@@ -104,7 +105,7 @@ const prodConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/font-woff',
-            name: 'font/[name].[ext]'
+            name: 'fonts/[name].[ext]'
           }
         }]
       },
@@ -115,7 +116,7 @@ const prodConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/octet-stream',
-            name: 'font/[name].[ext]'
+            name: 'fonts/[name].[ext]'
           }
         }]
       },
@@ -126,7 +127,7 @@ const prodConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'image/svg+xml',
-            name: 'font/[name].[ext]'
+            name: 'fonts/[name].[ext]'
           }
         }]
       },
@@ -163,7 +164,19 @@ const prodConfig = module.exports = {
     environmentPluginConfig,
     loaderOptionsPluginConfig,
     new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
-    new ExtractTextPlugin('styles.[contentHash].css', {
+    // new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jQuery: "jquery",
+    // }),
+    new GoogleFontsPlugin({
+      fonts: [{
+          family: "PT Sans"
+        },
+      ],
+      path: "fonts/",
+      filename: "fonts/fonts.css"
+    }),
+    new ExtractTextPlugin('fonts/styles.[contentHash].css', {
       allChunks: true
     }),
     new OptimizeCssAssetsPlugin({
