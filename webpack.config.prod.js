@@ -175,7 +175,7 @@ const prodConfig = module.exports = {
       path: "fonts/",
       filename: "fonts/fonts.css"
     }),
-    new ExtractTextPlugin('styles/styles.[contentHash].css', {
+    new ExtractTextPlugin('styles.[contentHash].css', {
       allChunks: true
     }),
     new OptimizeCssAssetsPlugin({
@@ -195,10 +195,10 @@ const prodConfig = module.exports = {
     //   name: 'vendor'
     // }),
     new UglifyJSPlugin({
-      parallel: true,
-      sourceMap: true
+      sourceMap: true,
+      parallel: true
     }),
-    htmlWebpackPluginConfig,
+    htmlWebpackPluginConfig
   ]
 };
 
