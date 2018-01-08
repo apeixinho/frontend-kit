@@ -30,12 +30,29 @@ section {
   position: relative;
   width: 100%;
 }
+/* ##### HEADER SECTION ##### */
+
+header, nav {
+  display: -webkit-flex;
+  display: flex;
+}
+
+header {
+  background-color: #f9f9f9;
+  padding: 20px;
+  justify-content: space-between;
+  flex: 1;
+}
+
+nav {
+  justify-content: flex-end;
+  align-self: center;
+}
 
 /*##### HERO SECTION #####*/
 .hero {
   height: 100%;
-  /* background: url("https://source.unsplash.com/a2NRu2Wxa2o/"); */
-  background: url("../images/a2NRu2Wxa2o.jpeg");
+  background: url("../images/hero-background.jpg");
   background-size: cover;
   background-position: center;
 }
