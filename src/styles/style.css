@@ -33,7 +33,6 @@ section {
 /* ##### HEADER SECTION ##### */
 
 header, nav {
-  display: -webkit-flex;
   display: flex;
 }
 
@@ -440,8 +439,6 @@ nav {
   }
   .experience .content ul li:nth-child(even) .experience-content {
     left: calc(-40vw - 57px);
-    -webkit-border-radius: 5px 0px 5px 5px;
-    -moz-border-radius: 5px 0px 5px 5px;
     border-radius: 5px 0px 5px 5px;
   }
   .experience .content ul li:nth-child(even) .experience-content:before {
