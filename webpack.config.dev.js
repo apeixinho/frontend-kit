@@ -161,8 +161,18 @@ const devConfig = module.exports = {
     // }),
     new GoogleFontsPlugin({
       fonts: [{
-        family: "PT Sans"
-      }],
+          family: "PT Sans"
+        }, {
+          family: "Open Sans"
+        },
+        {
+          family: "Roboto",
+          variants: ["400", "700italic"]
+        },
+        {
+          family: "Ubuntu"
+        },
+      ],
       path: "fonts/",
       filename: "fonts/fonts.css"
     }),
