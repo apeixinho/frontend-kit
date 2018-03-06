@@ -21,9 +21,19 @@ body {
   font-family: "PT Sans", sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+a{
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+	opacity: 0.85;
+}
+
+a:hover{
+	opacity: 1;
+}
+
+ul, nav{
+	list-style: none;
 }
 
 section {
