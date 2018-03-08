@@ -43,13 +43,16 @@ section {
 /*##### NAV HEADER #####*/
 
 .main_header {
-  z-index: 9;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
   width: 100%;
-  height: auto;
-  position: fixed; // background: none;
-  background: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid $text-color; // overflow: hidden;
+  z-index: 10;
+  align-items: center;
+  display:flex;
+  justify-content: space-around;
+  border-bottom: 1px solid rgba(68, 68, 68, 0.5); // overflow: hidden;
   top: -200px;
+  min-height: 70px;
   transition: all 0.25s;
   nav {
     ul {
@@ -57,14 +60,14 @@ section {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      height: auto;
+      // height: auto;
     }
     ul li {
       width: 110px;
       text-align: center;
       font-weight: normal;
       transition: background-color .2s ease-in-out 0s;
-      border-right: 1px solid $text-color;
+      border-right: 1px solid rgba(68, 68, 68, 0.5);
     }
     ul li:last-child {
       border: none;
@@ -459,13 +462,17 @@ section {
       clear: both;
     }
   }
+}
+
+@media screen and (max-width: 480px) {
   .main_header {
-    // background: red;
+    background: red;
     // border-bottom: none;
     // ul li {
     //   border-bottom: 1px solid $text-color;
     // }
   }
+
 }
 
 @media screen and (min-width: 640px) {
@@ -497,6 +504,10 @@ section {
   }
 }
 
+/*
+this query really means,
+if [device width] is greater than or equal to 960px, then do
+*/
 @media screen and (min-width: 960px) {
   .experience {
     .content {

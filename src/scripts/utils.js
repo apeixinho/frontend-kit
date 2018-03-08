@@ -7,12 +7,22 @@ $(document).ready(function () {
   var developmentIsVisible = false;
   var mainHeaderHeight = $('.main_header').height();
 
+  $('a[href^="#"]').on('click', function () {
+    // e.preventDefault();
+    var target = this.hash, $target = $(target);
+    $('html, body').stop().animate({
+      'scrollTop': $target.offset().top - mainHeaderHeight
+    }, 900, 'swing', function () {
+      window.location.hash = target;
+    });
+  });
+
   /* ####### HERO SECTION ####### */
 
   $('.hero .content .header').delay(500).animate({
     'opacity': '1',
     'top': '50%'
-  }, 1000);
+  }, 1000, 'swing');
 
   $(window).scroll(function () {
 
