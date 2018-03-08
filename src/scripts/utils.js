@@ -1,52 +1,57 @@
 let $ = window.$ = window.jQuery = require('jquery');
 
-$( document ).ready(function() {
+$(document).ready(function () {
   // Main variables
-    var $aboutTitle = $('.about-myself .content h2');
-    var $developmentWrapper = $('.development-wrapper');
-    var developmentIsVisible = false;
-
+  var $aboutTitle = $('.about-myself .content h2');
+  var $developmentWrapper = $('.development-wrapper');
+  var developmentIsVisible = false;
+  var mainHeaderHeight = $('.main_header').height();
 
   /* ####### HERO SECTION ####### */
 
   $('.hero .content .header').delay(500).animate({
-    'opacity':'1',
+    'opacity': '1',
     'top': '50%'
-  },1000);
+  }, 1000);
 
+  $(window).scroll(function () {
 
-  $(window).scroll( function(){
+    if ($(window).scrollTop() > mainHeaderHeight) {
+      $(".main_header").addClass("sticky");
+    } else {
+      $(".main_header").removeClass("sticky");
+    }
 
     var bottom_of_window = $(window).scrollTop() + $(window).height();
 
     /* ##### ABOUT MYSELF SECTION #### */
-    if( bottom_of_window > ($aboutTitle.offset().top + $aboutTitle.outerHeight())){
+    if (bottom_of_window > ($aboutTitle.offset().top + $aboutTitle.outerHeight())) {
       $('.about-myself .content h2').addClass('aboutTitleVisible');
     }
-  /* ##### EXPERIENCE SECTION #### */
+    /* ##### EXPERIENCE SECTION #### */
 
-      // Check the location of each element hidden */
-      $('.experience .content .hidden').each( function(){
+    // Check the location of each element hidden */
+    $('.experience .content .hidden').each(function () {
 
-          var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+      var bottom_of_object = $(this).offset().top + $(this).outerHeight();
 
-          /* If the object is completely visible in the window, fadeIn it */
-          if( bottom_of_window > bottom_of_object ){
+      /* If the object is completely visible in the window, fadeIn it */
+      if (bottom_of_window > bottom_of_object) {
 
-            $(this).animate({
-              'opacity':'1',
-              'margin-left': '0'
-            },600);
-          }
-      });
+        $(this).animate({
+          'opacity': '1',
+          'margin-left': '0'
+        }, 600);
+      }
+    });
 
-  /*###### SKILLS SECTION ######*/
+    /*###### SKILLS SECTION ######*/
 
-    var middle_of_developmentWrapper = $developmentWrapper.offset().top + $developmentWrapper.outerHeight()/2;
+    var middle_of_developmentWrapper = $developmentWrapper.offset().top + $developmentWrapper.outerHeight() / 2;
 
-    if((bottom_of_window > middle_of_developmentWrapper)&& (developmentIsVisible == false)){
+    if ((bottom_of_window > middle_of_developmentWrapper) && (developmentIsVisible == false)) {
 
-      $('.skills-bar-container li').each( function(){
+      $('.skills-bar-container li').each(function () {
 
         var $barContainer = $(this).find('.bar-container');
         var dataPercent = parseInt($barContainer.data('percent'));
@@ -58,11 +63,11 @@ $( document ).ready(function() {
 
         function frame() {
           if (width >= dataPercent) {
-              clearInterval(id);
+            clearInterval(id);
           } else {
             width++;
-            elem.css("width", width+"%");
-            percent.html(width+" %");
+            elem.css("width", width + "%");
+            percent.html(width + " %");
           }
         }
       });
