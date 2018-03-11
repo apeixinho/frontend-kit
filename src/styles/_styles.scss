@@ -1,3 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
+// Colors
+$white: #fff;
+$beige: #f7f7f7;
+$gray1: #555;
+$blue1: #2196F3;
+$gray2: #333;
+$gray3: #414a4f;
+
 /*-------------
  	General
 -------------*/
@@ -10,10 +21,11 @@
 
 html {
   font: normal 16px sans-serif;
-  color: #555;
+  color: $gray1;
 }
 
-ul, nav {
+ul,
+nav {
   list-style: none;
 }
 
@@ -26,19 +38,19 @@ a {
     opacity: 1;
   }
   &.btn {
-    color: #fff;
+    color: $white;
     border-radius: 4px;
     text-transform: uppercase;
-    background-color: #2196F3;
+    background-color: $blue1;
     font-weight: 800;
     text-align: center;
   }
 }
 
 hr {
-  width: 200px;
+  width: 150px;
   height: 2px;
-  background-color: #2196F3;
+  background-color: $blue1;
   border: 0;
   margin-bottom: 80px;
 }
@@ -49,7 +61,7 @@ section {
   align-items: center;
   padding: 125px 100px;
   h3.title {
-    color: #414a4f;
+    color: $gray3;
     text-transform: capitalize;
     font: bold 32px 'Open Sans', sans-serif;
     margin-bottom: 35px;
@@ -64,18 +76,17 @@ section {
   }
 }
 
-/* @media (max-width: 1000px){
-	section{
-		padding: 100px 50px;
-	}
+@media (max-width: 1000px) {
+  section {
+    padding: 100px 50px;
+  }
+}
 
-} */
-/* @media (max-width: 600px){
-	section{
-		padding: 80px 30px;
-	}
-
-} */
+@media (max-width: 600px) {
+  section {
+    padding: 80px 30px;
+  }
+}
 
 ul.grid {
   width: 100%;
@@ -90,124 +101,56 @@ ul.grid {
 
 header {
   position: fixed;
-  top: -70px;
-  max-height: 70px;
+  background-color: $blue1;
+  border-bottom: 1px solid $beige;
+  top: -200px;
+  min-height: 70px;
   left: 0;
   z-index: 10;
   width: 100%;
   display: flex;
-  transition: all 0.3s;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
-  padding: 35px 100px 35px 100px;
+  transition: all 0.3s;
+  color: $white;
+  padding: 15px 50px;
+  // padding: 35px 100px 0;
   h2 {
     font-family: 'Quicksand', sans-serif;
   }
   nav {
     display: flex;
+    font-size: larger;
+    li {
+      margin: 0 15px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
-
-nav ul {
-  list-style: none;
-  overflow: hidden;
-  text-align: right;
-  float: right;
-  li {
-    display: inline-block;
-    margin-left: 35px;
-    line-height: 1.5;
-  }
-}
-
-header nav li {
-  margin: 0 15px;
-  &:first-child {
-    margin-left: 0;
-  }
-  &:last-child {
-    margin-right: 0;
-  }
-}
-
-/* @media only screen and (max-width: 766px) {
-  nav ul {
-    padding-top: 10px;
-    margin-bottom: 22px;
-    float: left;
-    text-align: center;
-    width: 100%;
-  }
-} */
-
-/* .open-nav {
-  max-height: 400px;
-}
-.open-nav .mobile-toggle {
-  transform: rotate(-90deg);
-}  */
 
 .sticky {
-  /*   background-color: rgba(255, 255, 255, 0.93); */
-  background-color: #2196F3;
   top: 0;
-  border-bottom: 1px solid gainsboro;
 }
 
-@keyframes scroll {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateY(20px);
+@media (max-width: 1000px) {
+  header {
+    padding: 20px 50px;
   }
 }
 
-
-.mobile-toggle {
-  display: none;
-  cursor: pointer;
-  font-size: 20px;
-  position: absolute;
-  right: 22px;
-  top: 0;
-  width: 30px;
-  transition: all 200ms ease-in;
-}
-
-/* @media only screen and (max-width: 766px) {
-  .mobile-toggle {
-    display: block;
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    h2 {
+      margin-bottom: 15px;
+    }
   }
-} */
-/*  .mobile-toggle span {
-  width: 30px;
-  height: 4px;
-  margin-bottom: 6px; */
-/*   border-radius: 1000px; */
-/*   background: #8f8f8f; */
-/*    display: block;
-}  */
-
-/* @media (max-width: 1000px){
-	header{
-		padding: 20px 50px;
-	}
-}  */
-
-/* @media (max-width: 700px){
-	header{
-		flex-direction: column;
-	}
-
-	header h2{
-		margin-bottom: 15px;
-	}
-} */
+}
 
 /*----------------
  	Hero Section
@@ -217,7 +160,7 @@ header nav li {
   position: relative;
   justify-content: center;
   min-height: 100vh;
-  color: #fff;
+  color: $white;
   text-align: center;
   .background-image {
     position: absolute;
@@ -226,8 +169,7 @@ header nav li {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center;
-    background-color: #2196F3;
+    background-color: $blue1;
     z-index: -1;
     &:after {
       content: '';
@@ -236,19 +178,17 @@ header nav li {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #414a4f;
+      background-color: $gray3;
       opacity: 0.75;
     }
   }
   h1 {
     font: bold 60px 'Open Sans', sans-serif;
     margin-bottom: 15px;
-    text-shadow: 0px 2px 3px #2d2d2d;
   }
   h3 {
     font: normal 28px 'Open Sans', sans-serif;
     margin-bottom: 40px;
-    text-shadow: 0px 2px 3px #2d2d2d;
   }
   a.btn {
     padding: 20px 46px;
@@ -275,7 +215,7 @@ header nav li {
 ---------------------*/
 
 .оur-work {
-  background-color: #fff;
+  background-color: $white;
 }
 
 .our-work .grid li {
@@ -285,7 +225,7 @@ header nav li {
   background-clip: content-box;
   background-size: cover;
   background-position: center;
-  background-color: #333;
+  background-color: $gray2;
   &.small {
     flex-basis: 40%;
   }
@@ -296,7 +236,8 @@ header nav li {
 
 @media (max-width: 1000px) {
   .our-work .grid li {
-    &.small, &.large {
+    &.small,
+    &.large {
       flex-basis: 100%;
     }
   }
@@ -307,14 +248,14 @@ header nav li {
 ----------------------*/
 
 .features {
-  background-color: #f7f7f7;
+  background-color: $beige;
   .grid li {
     padding: 0 30px;
     flex-basis: 33%;
     text-align: center;
     i {
       font-size: 50px;
-      color: #2196F3;
+      color: $blue1;
       margin-bottom: 25px;
     }
     h4 {
@@ -349,7 +290,7 @@ header nav li {
 --------------------*/
 
 .reviews {
-  background-color: #fff;
+  background-color: $white;
   .quote {
     text-align: center;
     width: 80%;
@@ -384,7 +325,7 @@ header nav li {
 ---------------------*/
 
 .contact {
-  background-color: #f7f7f7;
+  background-color: $beige;
   form {
     display: flex;
     align-items: center;
@@ -397,7 +338,7 @@ header nav li {
       flex: 1;
       margin-right: 30px;
       font-size: 18px;
-      color: #555;
+      color: $gray1;
     }
     .btn {
       padding: 18px 42px;
@@ -421,8 +362,8 @@ footer {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  color: #fff;
-  background-color: #414a4f;
+  color:$white;
+  background-color: $gray3;
   padding: 60px 0;
   ul {
     display: flex;
@@ -444,7 +385,7 @@ footer {
     color: rgba(255, 255, 255, 0.6);
     margin-bottom: 10px;
     a {
-      color: #fff;
+      color: $white;
     }
   }
 }
@@ -457,6 +398,8 @@ footer {
 
 /* -- Demo ads -- */
 
-/* @media (max-width: 1200px) {
-	#bsaHolder{ display:none;}
-} */
+// @media (max-width: 1200px) {
+//   #bsaHolder {
+//     display: none;
+//   }
+// }
