@@ -5,9 +5,9 @@ $(document).ready(function () {
   var $aboutTitle = $('.about-myself .content h2');
   var $developmentWrapper = $('.development-wrapper');
   var developmentIsVisible = false;
-  var mainHeaderHeight = $('.main_header').height();
+  var mainHeaderHeight = $('.main_header').outerHeight();
 
-  $('a[href^="#"]').on('click', function () {
+  $('.main_header a[href^="#"]').on('click', function () {
     // e.preventDefault();
     var target = this.hash, $target = $(target);
     $('html, body').stop().animate({
@@ -25,6 +25,7 @@ $(document).ready(function () {
   }, 1000, 'swing');
 
   $(window).scroll(function () {
+    mainHeaderHeight = $('.main_header').outerHeight();
 
     if ($(window).scrollTop() > mainHeaderHeight) {
       $(".main_header").addClass("sticky");
