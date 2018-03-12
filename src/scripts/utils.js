@@ -7,14 +7,28 @@ $(document).ready(function () {
   var developmentIsVisible = false;
   var mainHeaderHeight = $('.main_header').outerHeight();
 
-  $('.main_header a[href^="#"]').on('click', function () {
-    // e.preventDefault();
-    var target = this.hash, $target = $(target);
-    $('html, body').stop().animate({
-      'scrollTop': $target.offset().top - mainHeaderHeight
-    }, 900, 'swing', function () {
-      window.location.hash = target;
+  // Cache selectors
+  var lastId,
+    mainHeader = $('.main_header'),
+    // All list items
+    menuItems = mainHeader.find("a"),
+    // Anchors corresponding to menu items
+    scrollItems = menuItems.map(function () {
+      var item = $($(this).attr("href"));
+      if (item.length) {
+        return item;
+      }
     });
+
+  // Bind click handler to menu items
+  // so we can get a fancy scroll animation
+  menuItems.click(function (e) {
+    var href = $(this).attr("href"),
+      offsetTop = href === "#" ? 0 : $(href).offset().top - mainHeaderHeight + 1;
+    $('html, body').stop().animate({
+      scrollTop: offsetTop
+    }, 900, 'swing');
+    e.preventDefault();
   });
 
   /* ####### HERO SECTION ####### */
@@ -26,6 +40,27 @@ $(document).ready(function () {
 
   $(window).scroll(function () {
     mainHeaderHeight = $('.main_header').outerHeight();
+
+    // Get container scroll position
+    var fromTop = $(this).scrollTop() + mainHeaderHeight;
+
+    // Get id of current scroll item
+    var cur = scrollItems.map(function () {
+      if ($(this).offset().top < fromTop)
+        return this;
+    });
+    // Get the id of the current element
+    cur = cur[cur.length - 1];
+    var id = cur && cur.length ? cur[0].id : "";
+
+    if (lastId !== id) {
+      lastId = id;
+      // Set/remove active class
+      menuItems
+        .parent().removeClass("active")
+        .end().filter("[href='#" + id + "']").parent().addClass("active");
+    }
+
 
     if ($(window).scrollTop() > mainHeaderHeight) {
       $(".main_header").addClass("sticky");
