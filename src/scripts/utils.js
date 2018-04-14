@@ -9,7 +9,7 @@ $(document).ready(function () {
     menuItems = topHeader.find("a"),
     // Anchors corresponding to menu items
     scrollItems = menuItems.map(function () {
-      var item = $($(this).attr("href"));
+      var item = $(this).attr("href");
       if (item.length) {
         return item;
       }
@@ -46,7 +46,7 @@ $(document).ready(function () {
       // Set/remove active class
       menuItems
         .parent().removeClass("active")
-        .end().filter("[href='#" + id + "']").parent().addClass("active");
+        .end().filter("[href='#'" + id + "']").parent().addClass("active");
     }
 
     if ($(window).scrollTop() > topHeaderHeight) {
