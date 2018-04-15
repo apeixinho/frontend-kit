@@ -3,8 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 
@@ -30,8 +28,8 @@ const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
     removeEmptyAttributes: true,
     removeStyleLinkTypeAttributes: true,
     keepClosingSlash: true,
-    minifyJS: false,
-    minifyCSS: false,
+    minifyJS: true,
+    minifyCSS: true,
     minifyURLs: true
   },
   // Properties you define here are available in index.html
@@ -177,26 +175,6 @@ const prodConfig = module.exports = {
     }),
     new ExtractTextPlugin('styles.[contentHash].css', {
       allChunks: true
-    }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessorOptions: {
-        map: {
-          inline: false,
-        },
-        discardComments: {
-          removeAll: true
-        }
-      },
-      canPrint: false
-    }),
-    // Use CommonsChunkPlugin to create a separate bundle
-    // of vendor libraries so that they're cached separately.
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor'
-    // }),
-    new UglifyJSPlugin({
-      sourceMap: true,
-      parallel: true
     }),
     htmlWebpackPluginConfig
   ]
