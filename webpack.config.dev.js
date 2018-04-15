@@ -7,7 +7,7 @@ const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
   debug: true,
-  noInfo: true // set to false to see a list of every file being bundled.
+  noInfo: false // set to false to see a list of every file being bundled.
 
 });
 

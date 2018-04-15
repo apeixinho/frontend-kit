@@ -2,9 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
-
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: true,
@@ -161,7 +160,7 @@ const prodConfig = module.exports = {
   plugins: [
     environmentPluginConfig,
     loaderOptionsPluginConfig,
-    new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
+    //new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     // new webpack.ProvidePlugin({
     //   $: "jquery",
     //   jQuery: "jquery",
