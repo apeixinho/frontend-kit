@@ -39,6 +39,7 @@
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.8.3",
     "postcss-loader": "^2.1.5",
+    "responsive-nav": "^1.0.39",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
@@ -47,7 +48,6 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "jquery": "^3.3.1"
+    "babel-polyfill": "^6.26.0"
   }
 }
