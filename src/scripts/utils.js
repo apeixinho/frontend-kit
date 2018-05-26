@@ -1,5 +1,4 @@
 import scrollSpy from './scrollspy';
-import responsiveNav from 'responsive-nav';
 
 // on document ready
 document.addEventListener('DOMContentLoaded', function () {
@@ -20,6 +19,4 @@ document.addEventListener('DOMContentLoaded', function () {
   let menu = document.querySelector('.navbar');
   // eslint-disable-next-line
   scrollSpy(menu,975);
-  // eslint-disable-next-line
-  let navigation = responsiveNav(".nav-collapse");
 });
