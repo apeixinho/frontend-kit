@@ -1,111 +1,69 @@
-let $ = window.$ = window.jQuery = require('jquery');
+import scrollSpy from './scrollspy';
 
-$(document).ready(function () {
-  // Main variables
-  var $aboutTitle = $('.about-myself .content h2');
-  var $developmentWrapper = $('.development-wrapper');
-  var developmentIsVisible = false;
-  var mainHeaderHeight = $('.main_header').outerHeight();
+// on document ready
+document.addEventListener('DOMContentLoaded', function () {
 
-  // Cache selectors
-  var lastId,
-    mainHeader = $('.main_header'),
-    // All list items
-    menuItems = mainHeader.find("a"),
-    // Anchors corresponding to menu items
-    scrollItems = menuItems.map(function () {
-      var item = $($(this).attr("href"));
-      if (item.length) {
-        return item;
-      }
-    });
+   // Main variables
+   // eslint-disable-next-line
+   let aboutTitle = document.querySelector('.about-myself .content h2');
+   let developmentWrapper = document.querySelector('.development-wrapper');
+   let developmentIsVisible = false;
+   // eslint-disable-next-line
+   let mainHeaderHeight = document.querySelector('.main_header').offsetHeight;
 
-  // Bind click handler to menu items
-  // so we can get a fancy scroll animation
-  menuItems.click(function (e) {
-    var href = $(this).attr("href"),
-      offsetTop = href === "#" ? 0 : $(href).offset().top - mainHeaderHeight + 1;
-    $('html, body').stop().animate({
-      scrollTop: offsetTop
-    }, 900, 'swing');
-    e.preventDefault();
-  });
+  //on window scroll
+  window.onscroll = function () {
 
-  /* ####### HERO SECTION ####### */
+    let topHeader = document.querySelector('.main_header');
+    let topHeaderHeight = topHeader.offsetHeight;
+    let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
-  $('.hero .content .header').delay(500).animate({
-    'opacity': '1',
-    'top': '50%'
-  }, 1000, 'swing');
-
-  $(window).scroll(function () {
-    mainHeaderHeight = $('.main_header').outerHeight();
-
-    // Get container scroll position
-    var fromTop = $(this).scrollTop() + mainHeaderHeight;
-
-    // Get id of current scroll item
-    var cur = scrollItems.map(function () {
-      if ($(this).offset().top < fromTop)
-        return this;
-    });
-    // Get the id of the current element
-    cur = cur[cur.length - 1];
-    var id = cur && cur.length ? cur[0].id : "";
-
-    if (lastId !== id) {
-      lastId = id;
-      // Set/remove active class
-      menuItems
-        .parent().removeClass("active")
-        .end().filter("[href='#" + id + "']").parent().addClass("active");
-    }
-
-
-    if ($(window).scrollTop() > mainHeaderHeight) {
-      $(".main_header").addClass("sticky");
+    if (scrollPosition > topHeaderHeight) {
+      topHeader.classList.add("sticky");
     } else {
-      $(".main_header").removeClass("sticky");
+      topHeader.classList.remove("sticky");
     }
 
-    var bottom_of_window = $(window).scrollTop() + $(window).height();
+    // let bottom_of_window = document.window.scrollTop + document.window.offsetHeight;
+    let bottom_of_window = window.document.scrollTop + window.document.offsetHeight;
 
     /* ##### ABOUT MYSELF SECTION #### */
-    if (bottom_of_window > ($aboutTitle.offset().top + $aboutTitle.outerHeight())) {
-      $('.about-myself .content h2').addClass('aboutTitleVisible');
+    if (bottom_of_window > (aboutTitle.offsetTop + aboutTitle.offsetHeight)) {
+      aboutTitle.classList.add("aboutTitleVisible");
     }
     /* ##### EXPERIENCE SECTION #### */
-
     // Check the location of each element hidden */
-    $('.experience .content .hidden').each(function () {
+    // $('.experience .content .hidden').each(function () {
 
-      var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+    //   var bottom_of_object = $(this).offset().top + $(this).outerHeight();
 
-      /* If the object is completely visible in the window, fadeIn it */
-      if (bottom_of_window > bottom_of_object) {
+    //   /* If the object is completely visible in the window, fadeIn it */
+    //   if (bottom_of_window > bottom_of_object) {
 
-        $(this).animate({
-          'opacity': '1',
-          'margin-left': '0'
-        }, 600);
-      }
-    });
+    //     $(this).animate({
+    //       'opacity': '1',
+    //       'margin-left': '0'
+    //     }, 600);
+    //   }
+    // });
+
+
 
     /*###### SKILLS SECTION ######*/
 
-    var middle_of_developmentWrapper = $developmentWrapper.offset().top + $developmentWrapper.outerHeight() / 2;
+    let middle_of_developmentWrapper = developmentWrapper.offsetTop + developmentWrapper.offsetHeight / 2;
 
     if ((bottom_of_window > middle_of_developmentWrapper) && (developmentIsVisible == false)) {
 
-      $('.skills-bar-container li').each(function () {
-
-        var $barContainer = $(this).find('.bar-container');
-        var dataPercent = parseInt($barContainer.data('percent'));
-        var elem = $(this).find('.progressbar');
-        var percent = $(this).find('.percent');
-        var width = 0;
-
-        var id = setInterval(frame, 15);
+      let elements = document.querySelectorAll('.skills-bar-container li');
+      // eslint-disable-next-line
+      Array.prototype.forEach.call(elements, function(el, i){
+        let barContainer = this.querySelectorAll('.bar-container');
+        let dataPercent = parseInt(barContainer.data('percent'));
+        let elem = this.querySelectorAll('.progressbar');
+        let percent = this.querySelectorAll('.percent');
+        let width = 0;
+        let id = setInterval(frame, 15);
 
         function frame() {
           if (width >= dataPercent) {
@@ -117,7 +75,32 @@ $(document).ready(function () {
           }
         }
       });
+
+      // $('.skills-bar-container li').each(function () {
+
+      //   var $barContainer = $(this).find('.bar-container');
+      //   var dataPercent = parseInt($barContainer.data('percent'));
+      //   var elem = $(this).find('.progressbar');
+      //   var percent = $(this).find('.percent');
+      //   var width = 0;
+
+      //   var id = setInterval(frame, 15);
+
+      //   function frame() {
+      //     if (width >= dataPercent) {
+      //       clearInterval(id);
+      //     } else {
+      //       width++;
+      //       elem.css("width", width + "%");
+      //       percent.html(width + " %");
+      //     }
+      //   }
+      // });
       developmentIsVisible = true;
-    }
-  }); // -- End window scroll --
+}
+
+  };
+  let menu = document.querySelector('.navbar');
+  // eslint-disable-next-line
+  scrollSpy(menu,975);
 });
