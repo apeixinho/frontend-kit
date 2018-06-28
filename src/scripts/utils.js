@@ -16,7 +16,22 @@ document.addEventListener('DOMContentLoaded', function () {
       topHeader.classList.remove("sticky");
     }
   };
+  // on window resize
+  window.onresize = function () {
+    // add click listener only when window is less than 561px
+    if (typeof document.documentElement != 'undefined' &&
+      typeof document.documentElement.clientWidth !=
+      'undefined' && document.documentElement.clientWidth < 561) {
+      let item_list = document.querySelector('.nav-container').getElementsByTagName('a');
+      for (var i = 0; i < item_list.length; i++) {
+        item_list[i].addEventListener('click', function () {
+          document.getElementById('menu-nav').checked = false;
+        }, false);
+      }
+    }
+  };
+
   let menu = document.querySelector('.navbar');
   // eslint-disable-next-line
-  scrollSpy(menu,975);
+  scrollSpy(menu, 875);
 });
