@@ -1,0 +1,19 @@
+version: "3.2"
+
+services:
+  homepage:
+    build: .
+    container_name: myhomepage
+    image: myhomepage
+    expose:
+      - "10001"
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: www.adolfo-peixinho.eu.org, adolfo-peixinho.eu.org
+      LETSENCRYPT_HOST: www.adolfo-peixinho.eu.org, adolfo-peixinho.eu.org
+      LETSENCRYPT_EMAIL: admin@domain.com
+      LETSENCRYPT_TEST: "true"
+networks:
+  default:
+    external:
+      name: webproxy
