@@ -43,6 +43,8 @@ WORKDIR /home/app/site
 
 RUN yarn 
 
+RUN yarn run build:prod 
+
 EXPOSE 10001
 
 CMD ["node_modules/pm2/bin/pm2-docker", "start", "pm2-conf.json"]
