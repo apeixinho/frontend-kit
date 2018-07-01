@@ -30,11 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   };
-  
   const menu = document.querySelector('.navbar');
-  // scrollSpy.VanillaScrollspy = new VanillaScrollspy(navbar, 1000);
-  // eslint-disable-next-line
   scrollSpy(menu, 875);
-  scrollSpy.init();
-  // scrollSpy(menu, 875);
 });
