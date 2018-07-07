@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //on window scroll
   window.onscroll = function () {
 
-    let topHeader = document.querySelector('.main_header');
+    let topHeader = document.querySelector('header');
     let topHeaderHeight = topHeader.offsetHeight;
     let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (typeof document.documentElement != 'undefined' &&
       typeof document.documentElement.clientWidth !=
       'undefined' && document.documentElement.clientWidth < 561) {
-      let item_list = document.querySelector('.nav-container').getElementsByTagName('a');
+      var item_list = document.querySelector('.nav-container').getElementsByTagName('a');
       for (var i = 0; i < item_list.length; i++) {
         item_list[i].addEventListener('click', function () {
           document.getElementById('menu-nav').checked = false;
@@ -30,6 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   };
-  const menu = document.querySelector('.navbar');
+  const menu = document.querySelector('nav');
   scrollSpy(menu, 875);
 });

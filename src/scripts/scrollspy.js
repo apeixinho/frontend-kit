@@ -78,7 +78,6 @@ function menuControl(menu) {
 
     if (refElement.offsetTop <= scrollPos && (refElement.offsetTop + refElement.clientHeight) > scrollPos) {
       currLink.classList.add('active');
-
     } else {
       currLink.classList.remove('active');
     }
