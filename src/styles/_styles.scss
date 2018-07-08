@@ -1,11 +1,13 @@
 /*-------------
  	Imports
 -------------*/
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
 /*-------------
  	Colors
 -------------*/
+
 $blue: #2196F3;
 $white: #fff;
 $beige: #f7f7f7;
@@ -15,6 +17,7 @@ $gray3: #414a4f;
 /*-------------
  	General
 -------------*/
+
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +29,8 @@ html {
   color: $gray2;
 }
 
-ul, nav {
+ul,
+nav {
   list-style: none;
 }
 
@@ -35,7 +39,8 @@ a {
   color: inherit;
   cursor: pointer;
   opacity: 0.85;
-  &:hover, &:active {
+  &:hover,
+  &:active {
     opacity: 1;
   }
   &.btn {
@@ -96,9 +101,8 @@ ul.grid {
   justify-content: center;
 }
 
-
 .sticky {
-  top: 0;
+  top: 0 !important;
 }
 
 .hidden {
@@ -109,41 +113,9 @@ ul.grid {
  	Header
 -------------*/
 
-// header {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   z-index: 10;
-//   width: 100%;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   color: #fff;
-//   padding: 35px 100px 0;
-//   h2 {
-//     font-family: 'Quicksand', sans-serif;
-//   }
-//   nav {
-//     display: flex;
-//     li {
-//       margin: 0 15px;
-//       &:first-child {
-//         margin-left: 0;
-//       }
-//       &:last-child {
-//         margin-right: 0;
-//       }
-//     }
-//   }
-// }
-
-/*-------------
- 	Header
--------------*/
-
 header {
   background-color: $blue;
-  color: $white;
+  color: $white; 
   // border-bottom: 1px solid $beige;
   position: fixed;
   top: -300px;
@@ -154,8 +126,7 @@ header {
   // justify-content: space-around;
   align-items: center;
   height: auto;
-  transition: all 0.4s;
-
+  transition: all 0.4s; 
   // h2 {
   //   font-family: 'Quicksand', sans-serif;
   //   padding: 15px 50px;
@@ -172,12 +143,12 @@ header {
       flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      // transition: background-color .2s ease-in-out 0.1s;
-      // &:active, &:hover {
-      //   opacity: 1;
-      //   background-color: $beige;
-      //   color: $blue;
-      // }
+      .hover,
+      .active {
+        opacity: 1;
+        background-color: $beige;
+        color: $blue;
+      }
     }
     ul li a {
       height: 100%;
@@ -187,26 +158,10 @@ header {
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      &:active, &:hover {
-        opacity: 1;
-        background-color: $beige;
-        color: $blue;
-      }
+      transition: background-color .2s ease-in-out 0.1s;
     }
   }
 }
-
-
-
-
-// @media (max-width: 700px) {
-//   header {
-//     flex-direction: column;
-//     h2 {
-//       margin-bottom: 15px;
-//     }
-//   }
-// }
 
 @media (max-width: 1000px) {
   header {
@@ -224,83 +179,95 @@ header {
 }
 
 @media (max-width: 560px) {
-  .nav-container {
-    position: fixed;
-    top: 0;
+  header {
     left: 0;
-    height: auto;
-    width: 100%;
-    z-index: 20;
-    background: $blue;
-    opacity: 0;
-    // transition: all 0.2s ease;
-  }
-  // .nav-container ul {
-  //   position: absolute;
-  //   top: 50%;
-  //   transform: translateY(-50%);
-  //   width: 100%;
-  // }
-  .nav-container ul li {
-    display: block;
-    float: none;
-    width: 100%;
-    // text-align: right;
-    // margin-bottom: 10px;
-  }
-  // .nav-container ul li:nth-child(1) a {
-  //   transition-delay: 0.2s;
-  // }
-  // .nav-container ul li:nth-child(2) a {
-  //   transition-delay: 0.3s;
-  // }
-  // .nav-container ul li:nth-child(3) a {
-  //   transition-delay: 0.4s;
-  // }
-  // .nav-container ul li:nth-child(4) a {
-  //   transition-delay: 0.5s;
-  // }
-  // .nav-container ul li:not(:first-child) {
-  //   margin-left: 0;
-  // }
-  .nav-container ul li a {
-    // padding: 10px 25px;
-    opacity: 0;
-    // color: #fff;
-    // font-size: 24px;
-    // font-weight: 600;
-    transform: translateY(-20px);
-    transition: all 0.2s ease;
-  }
-  .nav-open {
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    display: block;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    z-index: 30;
-    border-radius: 4px;
-    border: 2px solid $blue;
-}   
-  .nav-open i {
-    display: block;
-    width: 20px;
-    height: 4px;
-    background: $blue;
-    border-radius: 4px;
-    margin-left: 12px;
-  }
-  .nav-open i:nth-child(1) {
-    margin-top: 14px;
-  }
-  .nav-open i:nth-child(2) {
-    margin-top: 4px;
-    opacity: 1;
-  }
-  .nav-open i:nth-child(3) {
-    margin-top: 4px;
+    margin: 0;
+    padding: 0;
+    transition: all 0.4s;
+    .nav-container {
+      position: fixed;
+      top: -400px;
+      height: auto;
+      width: 100%;
+      background-color: $blue;
+      opacity: 1;
+      transition: all 0.4s ease;
+    } 
+    // .nav-container ul {
+    //   position: absolute;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   width: 100%;
+    // }
+    .nav-container ul li {
+      display: block;
+      float: none;
+      width: 100%; 
+      // text-align: right;
+      // margin-bottom: 10px;
+    } 
+    // .nav-container ul li:nth-child(1) a {
+    //   transition-delay: 0.2s;
+    // }
+    // .nav-container ul li:nth-child(2) a {
+    //   transition-delay: 0.3s;
+    // }
+    // .nav-container ul li:nth-child(3) a {
+    //   transition-delay: 0.4s;
+    // }
+    // .nav-container ul li:nth-child(4) a {
+    //   transition-delay: 0.5s;
+    // }
+    // .nav-container ul li:not(:first-child) {
+    //   margin-left: 0;
+    // }
+    .nav-container ul li a {
+      // padding: 10px 25px;
+      // opacity: 0;
+      // color: #fff;
+      // font-size: 24px;
+      // font-weight: 600;
+      transform: translateY(-20px);
+      transition: background-color .2s ease-in-out 0.1s;
+      .hover,
+      .active {
+        opacity: 1;
+        background-color: $beige;
+        color: $blue;
+      }
+    }
+    .nav-open {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      display: block;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      z-index: 30; 
+      // border-radius: 4px;
+      border-radius: 24px;
+      border: 2px solid $blue;
+      background-color: $beige;
+    }
+    .nav-open i {
+      display: block;
+      width: 20px;
+      height: 4px;
+      background: $blue;
+      border-radius: 4px;
+      margin-left: 12px;
+    }
+    .nav-open i:nth-child(1) {
+      margin-top: 14px;
+    }
+    .nav-open i:nth-child(2) {
+      margin-top: 4px;
+      opacity: 1;
+    }
+    .nav-open i:nth-child(3) {
+      margin-top: 4px;
+    }
   }
 }
 
@@ -310,7 +277,7 @@ header {
 }
 
 #menu-nav:checked+.nav-open i {
-  background: $white;
+  margin-left: 14px;
   transition: transform 0.2s ease;
 }
 
@@ -334,7 +301,6 @@ header {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 /*----------------
  	Hero Section
@@ -420,7 +386,8 @@ header {
 
 @media (max-width: 1000px) {
   .our-work .grid li {
-    &.small, &.large {
+    &.small,
+    &.large {
       flex-basis: 100%;
     }
   }
