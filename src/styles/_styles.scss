@@ -40,7 +40,7 @@ a {
   cursor: pointer;
   opacity: 0.85;
   &:hover,
-  &:active {
+  .active {
     opacity: 1;
   }
   &.btn {
@@ -143,7 +143,7 @@ header {
       flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      .hover,
+      &:hover,
       .active {
         opacity: 1;
         background-color: $beige;
@@ -229,7 +229,7 @@ header {
       // font-weight: 600;
       transform: translateY(-20px);
       transition: background-color .2s ease-in-out 0.1s;
-      .hover,
+      &:hover,
       .active {
         opacity: 1;
         background-color: $beige;
