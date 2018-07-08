@@ -3,7 +3,7 @@ let $ = window.$ = window.jQuery = require('jquery');
 $(document).ready(function () {
   // Main variables
   var lastId,
-    topHeader = $('.main_header'),
+    topHeader = $("header"),
     topHeaderHeight = topHeader.outerHeight(),
     // All list items
     menuItems = topHeader.find("a"),
