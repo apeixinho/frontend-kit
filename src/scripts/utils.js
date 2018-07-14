@@ -5,11 +5,11 @@ $(document).ready(function () {
   var $aboutTitle = $('.about-myself .content h2');
   var $developmentWrapper = $('.development-wrapper');
   var developmentIsVisible = false;
-  var mainHeaderHeight = $('.main_header').outerHeight();
+  var mainHeaderHeight = $('header').outerHeight();
 
   // Cache selectors
   var lastId,
-    mainHeader = $('.main_header'),
+    mainHeader = $('header'),
     // All list items
     menuItems = mainHeader.find("a"),
     // Anchors corresponding to menu items
@@ -39,7 +39,7 @@ $(document).ready(function () {
   }, 1000, 'swing');
 
   $(window).scroll(function () {
-    mainHeaderHeight = $('.main_header').outerHeight();
+    mainHeaderHeight = $('header').outerHeight();
 
     // Get container scroll position
     var fromTop = $(this).scrollTop() + mainHeaderHeight;
@@ -63,9 +63,9 @@ $(document).ready(function () {
 
 
     if ($(window).scrollTop() > mainHeaderHeight) {
-      $(".main_header").addClass("sticky");
+      $("header").addClass("sticky");
     } else {
-      $(".main_header").removeClass("sticky");
+      $("header").removeClass("sticky");
     }
 
     var bottom_of_window = $(window).scrollTop() + $(window).height();

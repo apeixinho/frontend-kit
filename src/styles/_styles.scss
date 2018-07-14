@@ -40,56 +40,61 @@ section {
   width: 100%;
 }
 
-/*##### NAV HEADER #####*/
 
-.main_header {
+/*-------------
+ 	Header
+-------------*/
+
+header {
   background-color: rgba(255, 255, 255, 0.9);
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-  align-items: center;
-  display:flex;
-  justify-content: space-around;
   border-bottom: 1px solid rgba(68, 68, 68, 0.5);
-  top: -200px;
-  min-height: 70px;
-  transition: all 0.3s;
+  position: fixed;
+  top: -300px;
+  left: 0;
+  width: 100%;
+  z-index: 10; 
+  // justify-content: space-between;
+  // justify-content: space-around;
+  align-items: center;
+  height: auto;
+  transition: all 0.3s; 
+  // h2 {
+  //   font-family: 'Quicksand', sans-serif;
+  //   padding: 15px 50px;
+  // }
   nav {
     ul {
       list-style-type: none;
       display: flex;
-      justify-content: center;
+      width: 100%; 
+      // justify-content: center;
       flex-wrap: wrap;
     }
     ul li {
-      width: 110px;
+      flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      transition: background-color .2s ease-in-out 0s;
-    }
-    ul li:hover {
-      background-color: $bg-color;
+      &:hover,
+      .active {
+        opacity: 1;
+        background-color: $title-color;
+        color: $bg-color;
+      }
     }
     ul li a {
       height: 100%;
       width: 100%;
       display: inline-block;
-      padding: 15px 0 15px 0;
+      padding: 21px 0;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      opacity: 0.85;
-    }
-    ul li.active a, a:hover {
-      opacity: 1;
-      background-color: $title-color;
-      color: $bg-color;
-    }
-    ul li a span {
-      display: block;
+      transition: background-color .2s ease-in-out .1s;
     }
   }
 }
+
+
 .sticky {
   top: 0;
 }
@@ -97,7 +102,7 @@ section {
 
 .hero {
   height: 100%;
-  background: url('https://source.unsplash.com/a2NRu2Wxa2o/');
+  background: url(../images/hero-background.jpg);
   background-size: cover;
   background-position: center;
   .content {
@@ -303,7 +308,7 @@ section {
 /*##### RESUME SECTION #####*/
 
 .resume {
-  background: url('https://source.unsplash.com/L8126OwlroY/');
+  background: url(../images/shootingstar.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
