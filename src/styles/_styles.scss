@@ -40,64 +40,104 @@ section {
   width: 100%;
 }
 
-/*##### NAV HEADER #####*/
+.menu-hidden {
+  display: none;
+}
 
-.main_header {
+.sticky {
+  top: 0 !important;
+}
+
+/*-------------
+ 	Header
+-------------*/
+
+header {
   background-color: rgba(255, 255, 255, 0.9);
+  // border-bottom: 1px solid rgba(68, 68, 68, 0.5);
   position: fixed;
+  top: -300px;
+  left: 0;
   width: 100%;
-  z-index: 10;
-  align-items: center;
-  display:flex;
+  z-index: 10; 
+  // justify-content: space-between;
   justify-content: space-around;
-  border-bottom: 1px solid rgba(68, 68, 68, 0.5);
-  top: -200px;
-  min-height: 70px;
-  transition: all 0.3s;
+  align-items: center;
+  height: auto;
+  transition: all 0.3s; 
+  // h2 {
+  //   font-family: 'Quicksand', sans-serif;
+  //   padding: 15px 50px;
+  // }
   nav {
     ul {
       list-style-type: none;
       display: flex;
-      justify-content: center;
+      width: 100%; 
+      // justify-content: center;
       flex-wrap: wrap;
     }
     ul li {
-      width: 110px;
+      flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      transition: background-color .2s ease-in-out 0s;
-    }
-    ul li:hover {
-      background-color: $bg-color;
+      &:hover,
+      .active {
+        opacity: 1;
+        background-color: $title-color;
+        color: $bg-color;
+      }
     }
     ul li a {
       height: 100%;
       width: 100%;
       display: inline-block;
-      padding: 15px 0 15px 0;
+      padding: 21px 0;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      opacity: 0.85;
-    }
-    ul li.active a, a:hover {
-      opacity: 1;
-      background-color: $title-color;
-      color: $bg-color;
-    }
-    ul li a span {
-      display: block;
+      transition: background-color .2s ease-in-out .1s;
     }
   }
 }
-.sticky {
-  top: 0;
+
+#menu-nav:checked+.nav-open {
+  border: none;
+  transform: rotate(45deg);
 }
+
+#menu-nav:checked+.nav-open i {
+  margin-left: 14px;
+  transition: transform 0.2s ease;
+}
+
+#menu-nav:checked+.nav-open i:nth-child(1) {
+  transform: translateY(8px) rotate(180deg);
+}
+
+#menu-nav:checked+.nav-open i:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-nav:checked+.nav-open i:nth-child(3) {
+  transform: translateY(-8px) rotate(90deg);
+}
+
+#menu-nav:checked~.nav-container {
+  opacity: 1;
+}
+
+#menu-nav:checked~.nav-container ul li a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 /*##### HERO SECTION #####*/
 
 .hero {
   height: 100%;
-  background: url('https://source.unsplash.com/a2NRu2Wxa2o/');
+  background: url(../images/hero-background.jpg);
   background-size: cover;
   background-position: center;
   .content {
@@ -303,7 +343,7 @@ section {
 /*##### RESUME SECTION #####*/
 
 .resume {
-  background: url('https://source.unsplash.com/L8126OwlroY/');
+  background: url(../images/shootingstar.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -460,12 +500,79 @@ section {
   }
 }
 
-/*
-this query really means,
-if [device width] is greater than or equal to 675px, then do
-*/
-// @media screen and (min-width: 675px) {
-// }
+@media screen and (max-width: 560px) {
+  header {
+    left: 0;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s;
+    .nav-container {
+      position: fixed;
+      top: -400px;
+      height: auto;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      align-items: flex-start;
+      opacity: 1;
+    } 
+    // .nav-container ul {
+    //   position: absolute;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   width: 100%;
+    // }
+    .nav-container ul li {
+      display: block;
+      float: none;
+      width: 100%; 
+      // text-align: right;
+      // margin-bottom: 10px;
+    } 
+
+    .nav-container ul li a {
+      transform: translateY(-20px);
+      transition: background-color .2s ease-in-out 0.1s;
+      &:hover,
+      .active {
+        opacity: 1;
+        background-color: $title-color;
+        color: $bg-color;
+      }
+    }
+    .nav-open {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      display: block;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      z-index: 30; 
+      // border-radius: 4px;
+      border-radius: 24px;
+      border: 2px solid $title-color;
+      background-color: $bg-color;
+    }
+    .nav-open i {
+      display: block;
+      width: 20px;
+      height: 4px;
+      background: $title-color;
+      border-radius: 4px;
+      margin-left: 12px;
+    }
+    .nav-open i:nth-child(1) {
+      margin-top: 14px;
+    }
+    .nav-open i:nth-child(2) {
+      margin-top: 4px;
+      opacity: 1;
+    }
+    .nav-open i:nth-child(3) {
+      margin-top: 4px;
+    }
+  }
+}
 
 @media screen and (min-width: 640px) {
   .about-myself {
