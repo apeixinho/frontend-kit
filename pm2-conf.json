@@ -1,0 +1,16 @@
+{
+    "apps": [
+        {
+            "name": "myhomepage2",
+            "script": "serve-homepage.js",
+            "max_restarts": 20,
+            "instances": 2,
+            "max_memory_restart": "48M",
+            "watch": false,
+            "env": {
+                "PORT": 10002,
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  homepage:
+    build: .
+    container_name: myhomepage2
+    image: myhomepage2
+    expose:
+      - "10002"
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: www.peixe.eu.org, peixe.eu.org
+      LETSENCRYPT_HOST: www.peixe.eu.org, peixe.eu.org
+      LETSENCRYPT_EMAIL: admin@domain.com
+      LETSENCRYPT_TEST: "true"
+networks:
+  default:
+    external:
+      name: webproxy
