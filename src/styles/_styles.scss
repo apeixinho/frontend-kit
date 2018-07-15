@@ -53,15 +53,17 @@ section {
 -------------*/
 
 header {
-  background-color: rgba(255, 255, 255, 0.9);
+  // background-color: rgba(255, 255, 255, 0.9);
   // border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+  background-color: $bg-color;
+  opacity: 0.85;
   position: fixed;
   top: -300px;
   left: 0;
   width: 100%;
   z-index: 10; 
   // justify-content: space-between;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: center;
   height: auto;
   transition: all 0.3s; 
@@ -102,12 +104,13 @@ header {
 }
 
 #menu-nav:checked+.nav-open {
-  border: none;
+  // border: none;
+  border: 2px solid $title-color;
   transform: rotate(45deg);
 }
 
 #menu-nav:checked+.nav-open i {
-  margin-left: 14px;
+  margin-left: 12px;
   transition: transform 0.2s ease;
 }
 
@@ -506,13 +509,15 @@ header {
     left: 0;
     margin: 0;
     padding: 0;
+    opacity: 1;
     transition: all 0.3s;
     .nav-container {
       position: fixed;
       top: -400px;
       height: auto;
       width: 100%;
-      background-color: rgba(255, 255, 255, 0.9);
+      // background-color: rgba(255, 255, 255, 0.9);
+      background-color: $bg-color;
       align-items: flex-start;
       opacity: 1;
     } 
@@ -563,7 +568,7 @@ header {
       margin-left: 12px;
     }
     .nav-open i:nth-child(1) {
-      margin-top: 14px;
+      margin-top: 12px;
     }
     .nav-open i:nth-child(2) {
       margin-top: 4px;
