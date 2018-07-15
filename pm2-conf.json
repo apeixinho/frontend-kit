@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "myhomepage",
+            "name": "myhomepage1",
             "script": "serve-homepage.js",
             "max_restarts": 20,
             "instances": 2,
