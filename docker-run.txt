@@ -1,5 +1,5 @@
-docker run -d -e VIRTUAL_HOST=www.adolfo-peixinho.eu.org, adolfo-peixinho.eu.org \
-              -e LETSENCRYPT_HOST=www.adolfo-peixinho.eu.org, adolfo-peixinho.eu.org \
+docker run -d -e VIRTUAL_HOST=www.adolfo-peixinho.eu.org,adolfo-peixinho.eu.org \
+              -e LETSENCRYPT_HOST=www.adolfo-peixinho.eu.org,adolfo-peixinho.eu.org \
               -e LETSENCRYPT_EMAIL=admin@domain.com \
               -e LETSENCRYPT_TEST="true" \
               --expose=10001 \
