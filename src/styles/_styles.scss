@@ -40,6 +40,13 @@ section {
   width: 100%;
 }
 
+.menu-hidden {
+  display: none;
+}
+
+.sticky {
+  top: 0 !important;
+}
 
 /*-------------
  	Header
@@ -47,14 +54,14 @@ section {
 
 header {
   background-color: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+  // border-bottom: 1px solid rgba(68, 68, 68, 0.5);
   position: fixed;
   top: -300px;
   left: 0;
   width: 100%;
   z-index: 10; 
   // justify-content: space-between;
-  // justify-content: space-around;
+  justify-content: space-around;
   align-items: center;
   height: auto;
   transition: all 0.3s; 
@@ -94,10 +101,38 @@ header {
   }
 }
 
-
-.sticky {
-  top: 0;
+#menu-nav:checked+.nav-open {
+  border: none;
+  transform: rotate(45deg);
 }
+
+#menu-nav:checked+.nav-open i {
+  margin-left: 14px;
+  transition: transform 0.2s ease;
+}
+
+#menu-nav:checked+.nav-open i:nth-child(1) {
+  transform: translateY(8px) rotate(180deg);
+}
+
+#menu-nav:checked+.nav-open i:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-nav:checked+.nav-open i:nth-child(3) {
+  transform: translateY(-8px) rotate(90deg);
+}
+
+#menu-nav:checked~.nav-container {
+  opacity: 1;
+}
+
+#menu-nav:checked~.nav-container ul li a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 /*##### HERO SECTION #####*/
 
 .hero {
@@ -442,6 +477,7 @@ header {
   }
 }
 
+
 /* ############################
         RESPONSIVE
 ############################### */
@@ -465,12 +501,81 @@ header {
   }
 }
 
-/*
-this query really means,
-if [device width] is greater than or equal to 675px, then do
-*/
-// @media screen and (min-width: 675px) {
-// }
+@media screen and (max-width: 560px) {
+  header {
+    left: 0;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s;
+    .nav-container {
+      position: fixed;
+      top: -400px;
+      height: auto;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      align-items: flex-start;
+      opacity: 1;
+    } 
+    // .nav-container ul {
+    //   position: absolute;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   width: 100%;
+    // }
+    .nav-container ul li {
+      display: block;
+      float: none;
+      width: 100%; 
+      // text-align: right;
+      // margin-bottom: 10px;
+    } 
+
+    .nav-container ul li a {
+      transform: translateY(-20px);
+      transition: background-color .2s ease-in-out 0.1s;
+      &:hover,
+      .active {
+        opacity: 1;
+        background-color: $title-color;
+        color: $bg-color;
+      }
+    }
+    .nav-open {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      display: block;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      z-index: 30; 
+      // border-radius: 4px;
+      border-radius: 24px;
+      border: 2px solid $title-color;
+      background-color: $bg-color;
+    }
+    .nav-open i {
+      display: block;
+      width: 20px;
+      height: 4px;
+      background: $title-color;
+      border-radius: 4px;
+      margin-left: 12px;
+    }
+    .nav-open i:nth-child(1) {
+      margin-top: 14px;
+    }
+    .nav-open i:nth-child(2) {
+      margin-top: 4px;
+      opacity: 1;
+    }
+    .nav-open i:nth-child(3) {
+      margin-top: 4px;
+    }
+  }
+}
+
+
 
 @media screen and (min-width: 640px) {
   .about-myself {
