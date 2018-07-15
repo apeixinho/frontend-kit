@@ -22,7 +22,7 @@ RUN apk update && apk upgrade && \
 
 RUN addgroup -S app && adduser -S -g app app    
 
-COPY . /home/app/site
+COPY . /home/app/site2
 # COPY pm2-conf.json homepage.js dist /home/node/
 
 RUN chown -R app:app /home/app
@@ -39,7 +39,7 @@ RUN chown -R app:app /home/app
 
 USER app
 
-WORKDIR /home/app/site
+WORKDIR /home/app/site2
 
 RUN yarn 
 
