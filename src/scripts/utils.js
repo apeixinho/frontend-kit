@@ -23,6 +23,8 @@ $(document).ready(function () {
     $('html, body').stop().animate({
       scrollTop: offsetTop
     }, 500, 'swing');
+    $(".nav-container").removeClass("sticky");
+    $("#menu-nav").prop('checked',false);
     e.preventDefault();
   });
 
@@ -56,4 +58,13 @@ $(document).ready(function () {
     }
   }); //End window scroll
 
+
+  // add click listeners to anchors
+  $("#menu-nav").click(function () {
+    if ($("#menu-nav").is(':checked')) {
+      $(".nav-container").addClass("sticky");
+    } else {
+      $(".nav-container").removeClass("sticky");
+    }
+  });
 });
