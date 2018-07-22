@@ -50,19 +50,13 @@ $(document).ready(function () {
         .parent().removeClass("active")
         .end().filter("[href='#" + id + "']").parent().addClass("active");
     }
-  });
 
-  // add click listeners to anchors
-  document.getElementById('menu-nav').addEventListener('click', function () {
-
-    if (document.getElementById('menu-nav').checked) {
-      document.querySelector('.nav-container').classList.add("sticky");
+    if ($(window).scrollTop() > topHeaderHeight) {
+      topHeader.addClass("sticky");
     } else {
-      document.querySelector('.nav-container').classList.remove("sticky");
+      topHeader.removeClass("sticky");
     }
-  }, false);
-
-
+  });
   // add click listeners to anchors
   $("#menu-nav").click(function () {
     if ($("#menu-nav").is(':checked')) {
