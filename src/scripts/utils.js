@@ -24,7 +24,7 @@ $(document).ready(function () {
       scrollTop: offsetTop
     }, 500, 'swing');
     $(".nav-container").removeClass("sticky");
-    $("#menu-nav").prop('checked',false);
+    $("#menu-nav").prop('checked', false);
     e.preventDefault();
   });
 
@@ -50,13 +50,17 @@ $(document).ready(function () {
         .parent().removeClass("active")
         .end().filter("[href='#" + id + "']").parent().addClass("active");
     }
+  });
 
-    if ($(window).scrollTop() > topHeaderHeight) {
-      topHeader.addClass("sticky");
+  // add click listeners to anchors
+  document.getElementById('menu-nav').addEventListener('click', function () {
+
+    if (document.getElementById('menu-nav').checked) {
+      document.querySelector('.nav-container').classList.add("sticky");
     } else {
-      topHeader.removeClass("sticky");
+      document.querySelector('.nav-container').classList.remove("sticky");
     }
-  }); //End window scroll
+  }, false);
 
 
   // add click listeners to anchors
