@@ -109,10 +109,15 @@ ul.grid {
   display: none;
 }
 
+.active {
+  opacity: 1;
+  background-color: $beige;
+  color: $blue;
+}
+
 /*-------------
  	Header
 -------------*/
-
 header {
   background-color: $blue;
   color: $white; 
@@ -140,11 +145,11 @@ header {
       flex-wrap: wrap;
     }
     ul li {
+      transition: background-color .2s ease-in-out 0.1s;
       flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      &:hover,
-      .active {
+      &:hover {
         opacity: 1;
         background-color: $beige;
         color: $blue;
@@ -158,7 +163,6 @@ header {
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      transition: background-color .2s ease-in-out 0.1s;
     }
   }
 }
@@ -204,6 +208,12 @@ header {
       width: 100%; 
       // text-align: right;
       // margin-bottom: 10px;
+      transition: background-color .2s ease-in-out 0.1s;
+      &:hover {
+        opacity: 1;
+        background-color: $beige;
+        color: $blue;
+      }
     } 
     // .nav-container ul li:nth-child(1) a {
     //   transition-delay: 0.2s;
@@ -227,13 +237,7 @@ header {
       // font-size: 24px;
       // font-weight: 600;
       transform: translateY(-20px);
-      transition: background-color .2s ease-in-out 0.1s;
-      &:hover,
-      .active {
-        opacity: 1;
-        background-color: $beige;
-        color: $blue;
-      }
+      // transition: transform .2s ease-in-out 0.1s;
     }
     .nav-open {
       position: fixed;
@@ -277,7 +281,7 @@ header {
 
 #menu-nav:checked+.nav-open i {
   margin-left: 14px;
-  transition: transform 0.2s ease;
+  transition: transform .2s ease;
 }
 
 #menu-nav:checked+.nav-open i:nth-child(1) {
@@ -531,7 +535,7 @@ footer {
   p {
     text-transform: uppercase;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 10px;
     a {
       color: $white;
