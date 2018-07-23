@@ -5,5 +5,5 @@ docker run -d -e VIRTUAL_HOST=www.peixe.eu.org,peixe.eu.org \
               --expose=10002 \
               --restart=on-failure:10 \
               --network=webproxy \
-              --name myhomepage2 \
-              myhomepage2
+              --name homepage2 \
+              homepage2
