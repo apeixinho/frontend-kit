@@ -5,5 +5,5 @@ docker run -d -e VIRTUAL_HOST=www.adolfo-peixinho.eu.org,adolfo-peixinho.eu.org 
               --expose=10001 \
               --restart=on-failure:10 \
               --network=webproxy \
-              --name myhomepage1 \
-              myhomepage1
+              --name homepage1 \
+              homepage1
