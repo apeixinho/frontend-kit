@@ -100,12 +100,6 @@ header {
       cursor: pointer;
       transition: background-color .2s ease-in-out .1s;
     }
-    i {
-      display: block;
-    }
-    span {
-      display: block;
-    }
   }
 }
 
@@ -526,6 +520,12 @@ header {
       background-color: $bg-color;
       align-items: flex-start;
       opacity: 1;
+      i {
+        display: block;
+      }
+      span {
+        display: block;
+      }
     }
     // .nav-container ul {
     //   position: absolute;
