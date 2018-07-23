@@ -44,6 +44,12 @@ section {
   display: none;
 }
 
+.active {
+  opacity: 1;
+  background-color: $title-color;
+  color: $bg-color;
+}
+
 .sticky {
   top: 0 !important;
 }
@@ -75,15 +81,15 @@ header {
     ul {
       list-style-type: none;
       display: flex;
-      width: 100%; // justify-content: center;
+      width: 100%; 
+      // justify-content: center;
       flex-wrap: wrap;
     }
     ul li {
       flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      &:hover,
-      .active {
+      &:hover, .active {
         opacity: 1;
         background-color: $title-color;
         color: $bg-color;

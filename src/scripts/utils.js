@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
    let developmentWrapper = document.querySelector('.development-wrapper');
    let developmentIsVisible = false;
    // eslint-disable-next-line
-   let mainHeaderHeight = document.querySelector('.main_header').offsetHeight;
+   let mainHeaderHeight = document.querySelector('header').offsetHeight;
 
   //on window scroll
   window.onscroll = function () {
 
-    let topHeader = document.querySelector('.main_header');
+    let topHeader = document.querySelector('header');
     let topHeaderHeight = topHeader.offsetHeight;
     let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
 
@@ -102,5 +102,5 @@ document.addEventListener('DOMContentLoaded', function () {
   };
   let menu = document.querySelector('.navbar');
   // eslint-disable-next-line
-  scrollSpy(menu,975);
+  scrollSpy(menu,875);
 });
