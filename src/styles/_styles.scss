@@ -44,6 +44,12 @@ section {
   display: none;
 }
 
+.active {
+  opacity: 1;
+  background-color: $title-color;
+  color: $bg-color;
+}
+
 .sticky {
   top: 0 !important;
 }
