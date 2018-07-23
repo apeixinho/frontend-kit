@@ -195,6 +195,12 @@ header {
       width: 100%;
       background-color: $blue;
       opacity: 1;
+      i {
+        display: block;
+      }
+      span {
+        display: block;
+      }
     } 
     // .nav-container ul {
     //   position: absolute;
