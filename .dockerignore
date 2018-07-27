@@ -2,8 +2,10 @@
 .git
 .gitignore
 
-# Dockerfile
+# Docker stuff
 dockerfile
+Dockerfile
+docker-compose.yml
 
 # compiled output
 dist
@@ -33,6 +35,8 @@ npm-debug.log
 testem.log
 typings
 README.md
+yarn.lock
+docker-run.txt
 
 # e2e
 e2e/*.js
