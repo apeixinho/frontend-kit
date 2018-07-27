@@ -361,11 +361,9 @@ header {
   background-color: $gray1;
   
   &.small {
-    max-width: 40%;
     flex-basis: 40%;
   }
   &.large {
-    max-width: 60%;
     flex-basis: 60%;
   }
 }
