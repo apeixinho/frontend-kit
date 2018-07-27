@@ -2,8 +2,10 @@
 .git
 .gitignore
 
-# Dockerfile
+# Docker stuff
 dockerfile
+Dockerfile
+docker-compose.yml
 
 # compiled output
 dist
