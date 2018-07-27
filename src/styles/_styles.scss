@@ -61,6 +61,11 @@ hr {
   margin-bottom: 80px;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+}
+
 section {
   display: flex;
   flex-direction: column;
@@ -146,7 +151,7 @@ header {
       flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      &:hover {
+      &:hover, &.active {
         opacity: 1;
         background-color: $beige;
         color: $blue;
@@ -198,7 +203,7 @@ header {
       float: none;
       width: 100%; 
       transition: background-color .2s ease-in-out 0.1s;
-      &:hover {
+      &:hover, &.active {
         opacity: 1;
         background-color: $beige;
         color: $blue;
@@ -295,8 +300,9 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url(../images/hero-background.jpg);
     background-size: cover;
-    background-color: $blue;
+    // background-color: $blue;
     z-index: -1;
     &:after {
       content: '';
@@ -353,10 +359,13 @@ header {
   background-size: cover;
   background-position: center;
   background-color: $gray1;
+  
   &.small {
+    max-width: 40%;
     flex-basis: 40%;
   }
   &.large {
+    max-width: 60%;
     flex-basis: 60%;
   }
 }
