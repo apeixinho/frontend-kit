@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
@@ -9,6 +10,13 @@ const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   debug: true,
   noInfo: false // set to false to see a list of every file being bundled.
 
+});
+
+const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
+  // Options similar to the same options in webpackOptions.output
+  // both options are optional
+  filename: "[name].css",
+  chunkFilename: "[id].css"
 });
 
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -60,7 +68,7 @@ const devConfig = module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract({
+        // use: ExtractTextPlugin.extract({
           use: [{
               // translates CSS into CommonJS
               loader: "css-loader",
@@ -79,8 +87,8 @@ const devConfig = module.exports = {
             }
             // Please note we are not running postcss here
           ],
-          fallback: 'style-loader'
-        })
+          // fallback: 'style-loader'
+        // })
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
@@ -179,9 +187,10 @@ const devConfig = module.exports = {
     //   path: "fonts/",
     //   filename: "fonts/fonts.css"
     // }),
-    new ExtractTextPlugin('styles.css', {
-      allChunks: true
-    }),
+    // new ExtractTextPlugin('styles.css', {
+    //   allChunks: true
+    // }),
+    MiniCssExtractPluginConfig,
     htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
   ],
