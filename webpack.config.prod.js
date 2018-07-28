@@ -1,9 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+// const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: true,
@@ -35,6 +36,14 @@ const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   // using htmlWebpackPlugin.options.varName
   // trackJSToken: 'INSERT YOUR TOKEN HERE'
 });
+
+const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
+  // Options similar to the same options in webpackOptions.output
+  // both options are optional
+  filename: "[name].css",
+  chunkFilename: "[id].css"
+});
+
 const prodConfig = module.exports = {
   devtool: 'hidden-source-map',
   target: 'web',
@@ -44,9 +53,19 @@ const prodConfig = module.exports = {
     './index.js',
     './ejs/index.ejs'
   ],
+  mode: "production",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      maxInitialRequests: 20,   // for HTTP2
+      maxAsyncRequests: 20,     // for HTTP2
+      minSize: 40               // for example only: chosen to match 2 modules
+      // omit minSize in real use case to use the default of 30kb
+    }
   },
   module: {
     rules: [{
@@ -59,32 +78,34 @@ const prodConfig = module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract({
-          use: [{
-              // translates CSS into CommonJS
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              // compiles Sass to CSS
-              loader: 'sass-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true
-              }
-            }, {
-              // Runs compiled CSS through postcss for vendor prefixing
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-          ],
-          fallback: 'style-loader'
-        }),
+        // use: ExtractTextPlugin.extract({
+        use: [{
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            // translates CSS into CommonJS
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            // compiles Sass to CSS
+            loader: 'sass-loader',
+            options: {
+              outputStyle: 'expanded',
+              sourceMap: true,
+              sourceMapContents: true
+            }
+          }, {
+            // Runs compiled CSS through postcss for vendor prefixing
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+        ]
+        // }),
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
@@ -162,21 +183,22 @@ const prodConfig = module.exports = {
   plugins: [
     environmentPluginConfig,
     loaderOptionsPluginConfig,
+    MiniCssExtractPluginConfig,
     //new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     // new webpack.ProvidePlugin({
     //   $: "jquery",
     //   jQuery: "jquery",
     // }),
-    new GoogleFontsPlugin({
-      fonts: [{
-        family: "PT Sans"
-      }, ],
-      path: "fonts/",
-      filename: "fonts/fonts.css"
-    }),
-    new ExtractTextPlugin('styles.[contentHash].css', {
-      allChunks: true
-    }),
+    // new GoogleFontsPlugin({
+    //   fonts: [{
+    //     family: "PT Sans"
+    //   }, ],
+    //   path: "fonts/",
+    //   filename: "fonts/fonts.css"
+    // }),
+    // new ExtractTextPlugin('styles.[hash].css', {
+    //   allChunks: true
+    // }),
     htmlWebpackPluginConfig
   ]
 };
