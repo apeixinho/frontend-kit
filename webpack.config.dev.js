@@ -131,7 +131,9 @@ const devConfig = module.exports = {
           options: {
             // On development we want to see where the file is coming from, hence we preserve the [path]
             name: '[path][name].[ext]?hash=[hash:20]',
-            limit: 8192
+            limit: 8192,
+            fallback: 'responsive-loader',
+            quality: 85
           }
         }]
       },
