@@ -1,9 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
-// const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
@@ -12,12 +11,12 @@ const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
 
 });
 
-const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
-  // Options similar to the same options in webpackOptions.output
-  // both options are optional
-  filename: "[name].css",
-  chunkFilename: "[id].css"
-});
+// const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
+//   // Options similar to the same options in webpackOptions.output
+//   // both options are optional
+//   filename: "[name].css",
+//   chunkFilename: "[id].css"
+// });
 
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   title: 'homepage',
@@ -52,7 +51,6 @@ const devConfig = module.exports = {
     './index.js',
     './ejs/index.ejs'
   ],
-  mode: "development",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
@@ -170,27 +168,26 @@ const devConfig = module.exports = {
     //   $: "jquery",
     //   jQuery: "jquery",
     // }),
-    // new GoogleFontsPlugin({
-    //   fonts: [{
-    //       family: "PT Sans"
-    //     }, {
-    //       family: "Open Sans"
-    //     },
-    //     {
-    //       family: "Roboto",
-    //       variants: ["400", "700italic"]
-    //     },
-    //     {
-    //       family: "Ubuntu"
-    //     },
-    //   ],
-    //   path: "fonts/",
-    //   filename: "fonts/fonts.css"
-    // }),
-    // new ExtractTextPlugin('styles.css', {
-    //   allChunks: true
-    // }),
-    MiniCssExtractPluginConfig,
+    new GoogleFontsPlugin({
+      fonts: [{
+          family: "PT Sans"
+        }, {
+          family: "Open Sans"
+        },
+        {
+          family: "Roboto",
+          variants: ["400", "700italic"]
+        },
+        {
+          family: "Ubuntu"
+        },
+      ],
+      path: "fonts/",
+      filename: "fonts/fonts.css"
+    }),
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true
+    }),
     htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
   ],
