@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+// const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
@@ -168,23 +168,23 @@ const devConfig = module.exports = {
     //   $: "jquery",
     //   jQuery: "jquery",
     // }),
-    new GoogleFontsPlugin({
-      fonts: [{
-          family: "PT Sans"
-        }, {
-          family: "Open Sans"
-        },
-        {
-          family: "Roboto",
-          variants: ["400", "700italic"]
-        },
-        {
-          family: "Ubuntu"
-        },
-      ],
-      path: "fonts/",
-      filename: "fonts/fonts.css"
-    }),
+    // new GoogleFontsPlugin({
+    //   fonts: [{
+    //       family: "PT Sans"
+    //     }, {
+    //       family: "Open Sans"
+    //     },
+    //     {
+    //       family: "Roboto",
+    //       variants: ["400", "700italic"]
+    //     },
+    //     {
+    //       family: "Ubuntu"
+    //     },
+    //   ],
+    //   path: "fonts/",
+    //   filename: "fonts/fonts.css"
+    // }),
     new ExtractTextPlugin('styles.css', {
       allChunks: true
     }),

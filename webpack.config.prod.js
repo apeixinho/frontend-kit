@@ -83,7 +83,7 @@ const prodConfig = module.exports = {
               }
             },
           ],
-          // fallback: 'style-loader'
+        // fallback: 'style-loader'
         // }),
       },
       {
