@@ -59,7 +59,7 @@ const prodConfig = module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract({
+        // use: ExtractTextPlugin.extract({
           use: [{
               // translates CSS into CommonJS
               loader: 'css-loader',
@@ -83,8 +83,8 @@ const prodConfig = module.exports = {
               }
             },
           ],
-          fallback: 'style-loader'
-        }),
+          // fallback: 'style-loader'
+        // }),
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
