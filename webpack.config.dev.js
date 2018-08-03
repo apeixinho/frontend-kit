@@ -11,13 +11,6 @@ const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
 
 });
 
-// const MiniCssExtractPluginConfig = new MiniCssExtractPlugin({
-//   // Options similar to the same options in webpackOptions.output
-//   // both options are optional
-//   filename: "[name].css",
-//   chunkFilename: "[id].css"
-// });
-
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
   title: 'homepage',
   template: './ejs/index.ejs',
@@ -51,6 +44,7 @@ const devConfig = module.exports = {
     './index.js',
     './ejs/index.ejs'
   ],
+  mode: "development",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
@@ -66,7 +60,7 @@ const devConfig = module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        // use: ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           use: [{
               // translates CSS into CommonJS
               loader: "css-loader",
@@ -85,8 +79,8 @@ const devConfig = module.exports = {
             }
             // Please note we are not running postcss here
           ],
-          // fallback: 'style-loader'
-        // })
+          fallback: 'style-loader'
+        })
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
