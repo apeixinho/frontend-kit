@@ -40,6 +40,7 @@
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "font-awesome-loader": "^1.0.2",
+    "helmet": "^3.13.0",
     "html-webpack-plugin": "^4.0.0-alpha",
     "jimp": "^0.3.1",
     "jquery": "^3.3.1",

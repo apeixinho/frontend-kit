@@ -2,11 +2,27 @@
 
 const express = require('express');
 // const path = require('path');
-// const helmet = require('helmet');
+const helmet = require('helmet');
 const app = express();
 const port = 10002;
 
-// app.use(helmet());
+app.use(helmet.permittedCrossDomainPolicies());
+// don't set HTST header its already set by nginx
+app.use(helmet({
+  hsts: false
+}));
+
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    upgradeInsecureRequests: true,
+    disableAndroid: true
+  }
+}));
+
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+
+
 
 // define path from where to server static files, in our case 
 // root directory so we don't need to add any path
