@@ -14,10 +14,9 @@ app.use(helmet({
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'"],
-    upgradeInsecureRequests: true,
-    disableAndroid: true
-  }
+    defaultSrc: ["'self'"]
+  },
+  disableAndroid: true
 }));
 
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
