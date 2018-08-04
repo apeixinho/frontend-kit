@@ -3,7 +3,7 @@ docker run -d -e VIRTUAL_HOST=www.adolfo-peixinho.eu.org,adolfo-peixinho.eu.org 
               -e LETSENCRYPT_EMAIL=admin@domain.com \
               --expose=10001 \
               --restart=on-failure:10 \
-              --network=webproxy \
+              --network=webservices \
               --name homepage1 \
               homepage1
 
