@@ -4,10 +4,10 @@ docker service create \
 --label com.df.notify=true \
 --label com.df.distribute=true \
 --label com.df.httpsOnly=true \
---label com.df.serviceDomain=domain.com,www.domain.com \
+--label com.df.serviceDomain=adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org \
 --label com.df.servicePath=/ \
 --label com.df.srcPort=443 \
 --label com.df.port=10001 \
---label com.df.letsencrypt.host=domain.com,www.domain.com \
---label com.df.letsencrypt.email=admin@mail.com \
+--label com.df.letsencrypt.host=adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org \
+--label com.df.letsencrypt.email=tonibobone@gmail.com \
 homepage1

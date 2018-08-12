@@ -16,12 +16,12 @@ services:
         - com.df.notify=true
         - com.df.distribute=true
         - com.df.httpsOnly=true
-        - com.df.serviceDomain=domain.com
-        - com.df.letsencrypt.host=domain.com
-        - com.df.letsencrypt.email=email@domain.com
+        - com.df.serviceDomain=adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org
+        - com.df.letsencrypt.host=adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org
+        - com.df.letsencrypt.email=tonibobone@gmail.com
         - com.df.servicePath=/
         - com.df.srcPort=443
-        - com.df.port=8000
+        - com.df.port=10001
 networks:
   proxy:
     external: true
