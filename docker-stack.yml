@@ -1,0 +1,27 @@
+version: "3.6"
+services:
+  homepage2:
+    image: homepage2
+    networks:
+      - proxy
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 60M
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.httpsOnly=true
+        - com.df.serviceDomain=peixe.eu.org,www.peixe.eu.org
+        - com.df.letsencrypt.host=peixe.eu.org,www.peixe.eu.org
+        - com.df.letsencrypt.email=tonibobone@gmail.com
+        - com.df.servicePath=/
+        - com.df.srcPort=443
+        - com.df.port=10002
+networks:
+  proxy:
+    external: true
