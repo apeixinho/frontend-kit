@@ -1,0 +1,13 @@
+docker service create \
+--name homepage2 \
+--network proxy \
+--label com.df.notify=true \
+--label com.df.distribute=true \
+--label com.df.serviceDomain=peixe.eu.org,www.peixe.eu.org \
+--label com.df.letsencrypt.host=peixe.eu.org,www.peixe.eu.org \
+--label com.df.letsencrypt.email=admin@mail.com \
+--label com.df.httpsOnly=true \
+--label com.df.servicePath=/ \
+--label com.df.srcPort=443 \
+--label com.df.port=10002 \
+homepage2
