@@ -1,0 +1,27 @@
+version: "3.6"
+services:
+  homepage:
+    image: homepage1
+    networks:
+      - proxy
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 60M
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.httpsOnly=true
+        - com.df.serviceDomain=domain.com
+        - com.df.letsencrypt.host=domain.com
+        - com.df.letsencrypt.email=email@domain.com
+        - com.df.servicePath=/
+        - com.df.srcPort=443
+        - com.df.port=8000
+networks:
+  proxy:
+    external: true
