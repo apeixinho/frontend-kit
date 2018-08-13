@@ -1,6 +1,10 @@
 docker service create \
 --name homepage1 \
 --network proxy \
+--replicas=1 \
+--restart-condition=on-failure \
+--limit-cpu=0.25 \
+--limit-memory=64M \
 --label com.df.notify=true \
 --label com.df.distribute=true \
 --label com.df.httpsOnly=true \
