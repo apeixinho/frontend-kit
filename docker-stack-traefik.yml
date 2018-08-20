@@ -5,7 +5,7 @@ services:
     networks:
       - webgateway
     deploy:
-      replicas: 1
+      # replicas: 1
       restart_policy:
         condition: on-failure
       resources:
@@ -15,7 +15,7 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.backend=homepage1"  
-        - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org; PathPrefixStrip: /"
+        - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
         - "traefik.port=10001"
         - "traefik.docker.network=webgateway"
 
