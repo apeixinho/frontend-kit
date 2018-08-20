@@ -1,0 +1,25 @@
+version: "3.6"
+services:
+  homepage1:
+    image: homepage1
+    networks:
+      - webgateway
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 60M
+      labels:
+        - "traefik.enable=true"
+        - "traefik.backend=homepage1"  
+        - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
+        - "traefik.port=10001"
+        - "traefik.docker.network=webgateway"
+
+networks:
+  webgateway:
+    driver: overlay
+    external: true
