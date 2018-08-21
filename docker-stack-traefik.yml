@@ -1,0 +1,26 @@
+version: "3.6"
+services:
+  homepage2:
+    image: homepage2
+    networks:
+      - webgateway
+    deploy:
+      # replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 60M
+      labels:
+        - "traefik.enable=true"
+        - "traefik.backend=homepage2"  
+        - "traefik.frontend.rule=Host:peixe.eu.org,www.peixe.eu.org"
+        - "traefik.port=10002"
+        - "traefik.docker.network=webgateway"
+
+networks:
+  webgateway:
+    driver: overlay
+    external: true
+
