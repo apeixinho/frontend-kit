@@ -14,9 +14,10 @@ services:
           memory: 60M
       labels:
         - "traefik.enable=true"
-        - "traefik.backend=homepage2"
         - "traefik.frontend.entryPoints=http,https"  
         - "traefik.frontend.rule=Host:peixe.eu.org,www.peixe.eu.org"
+        - "traefik.backend=homepage2"
+        - "traefik.backend.loadbalancer.method=wrr"
         - "traefik.port=10002"
         - "traefik.docker.network=webgateway"
 
