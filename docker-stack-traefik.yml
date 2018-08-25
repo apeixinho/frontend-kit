@@ -14,10 +14,13 @@ services:
           memory: 60M
       labels:
         - "traefik.enable=true"
-        - "traefik.backend=homepage1"  
-        - "traefik.basic.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
-        - "traefik.basic.port=10001"
+        - "traefik.frontend.entryPoints=http,https"  
+        - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
+        - "traefik.backend=homepage1"
+        - "traefik.backend.loadbalancer.method=drr"
+        - "traefik.port=10001"
         - "traefik.docker.network=webgateway"
+
 networks:
   webgateway:
     driver: overlay
