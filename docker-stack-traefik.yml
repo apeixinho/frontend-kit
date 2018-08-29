@@ -18,6 +18,7 @@ services:
         - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
         - "traefik.backend=homepage1"
         - "traefik.backend.loadbalancer.method=drr"
+        # - "traefik.backend.loadbalancer.stickiness=true"
         - "traefik.port=10001"
         - "traefik.docker.network=webgateway"
 
