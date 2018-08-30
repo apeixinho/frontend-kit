@@ -6,7 +6,7 @@ services:
       - webgateway
     restart: on-failure  
     environment:
-      - COMPOSE_PROJECT_NAME = "homepage1"
+      COMPOSE_PROJECT_NAME: homepage1
     labels:
       - "traefik.enable=true"
       - "traefik.frontend.entryPoints=http,https"  
