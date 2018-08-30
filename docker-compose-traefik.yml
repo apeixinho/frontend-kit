@@ -1,0 +1,23 @@
+version: "3.6"
+
+services:
+  homepage2:
+    build: .
+    container_name: homepage2
+    image: homepage2
+    expose:
+      - "10002"
+    restart: on-failure
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http,https"  
+      - "traefik.frontend.rule=Host:peixe.eu.org,www.peixe.eu.org"
+      - "traefik.backend=homepage2"
+      - "traefik.backend.loadbalancer.method=drr"
+      # - "traefik.backend.loadbalancer.stickiness=true"
+      - "traefik.port=10002"
+      - "traefik.docker.network=webgateway"
+
+networks:
+  webgateway:
+    external: true
