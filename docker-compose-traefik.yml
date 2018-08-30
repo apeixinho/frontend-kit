@@ -4,8 +4,7 @@ services:
     image: homepage1
     networks:
       - webgateway
-    restart_policy:
-      condition: on-failure
+    restart: on-failure
     resources:
       limits:
         cpus: "0.3"
