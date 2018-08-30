@@ -5,6 +5,8 @@ services:
     build: .
     container_name: homepage2
     image: homepage2
+    networks:
+      - webgateway
     expose:
       - "10002"
     restart: on-failure
