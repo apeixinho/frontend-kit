@@ -2,6 +2,7 @@ version: "3.6"
 services:
   homepage1:
     image: homepage1
+    container_name: homepage1
     networks:
       - webgateway
     restart: on-failure  
