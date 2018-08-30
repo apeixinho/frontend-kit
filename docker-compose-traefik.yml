@@ -4,14 +4,17 @@ services:
     image: homepage1
     networks:
       - webgateway
-    restart: on-failure
-    resources:
-      limits:
-        cpus: "0.3"
-        memory: 60M
-      reservations:
-        cpus: '0.75'
-        memory: 120M  
+    deploy:
+      # replicas: 1
+      restart_policy:
+        condition: on-failure  
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 60M
+        reservations:
+          cpus: '0.75'
+          memory: 120M  
       labels:
         - "traefik.enable=true"
         - "traefik.frontend.entryPoints=http,https"  
