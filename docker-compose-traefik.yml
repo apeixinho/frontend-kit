@@ -5,21 +5,15 @@ services:
     networks:
       - webgateway
     restart: on-failure  
-    limits:
-      cpus: "0.3"
-      memory: 60M
-    reservations:
-      cpus: '0.75'
-      memory: 120M  
-      labels:
-        - "traefik.enable=true"
-        - "traefik.frontend.entryPoints=http,https"  
-        - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
-        - "traefik.backend=homepage1"
-        - "traefik.backend.loadbalancer.method=drr"
-        # - "traefik.backend.loadbalancer.stickiness=true"
-        - "traefik.port=10001"
-        - "traefik.docker.network=webgateway"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http,https"  
+      - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
+      - "traefik.backend=homepage1"
+      - "traefik.backend.loadbalancer.method=drr"
+      # - "traefik.backend.loadbalancer.stickiness=true"
+      - "traefik.port=10001"
+      - "traefik.docker.network=webgateway"
 
 networks:
   webgateway:
