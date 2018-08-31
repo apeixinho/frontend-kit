@@ -1,10 +1,10 @@
 version: "3.5"
 
 services:
-  homepage:
+  homepage2:
     build: .
-    container_name: myhomepage2
-    image: myhomepage2
+    container_name: homepage2
+    image: homepage2
     expose:
       - "10002"
     restart: unless-stopped
