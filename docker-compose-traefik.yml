@@ -20,8 +20,6 @@ services:
       - "traefik.backend.loadbalancer.method=drr"
       - "traefik.backend.loadbalancer.stickiness=true"
       - "traefik.port=10002"
-      - "traefik.backend.loadbalancer.stickiness=true"
-      - "traefik.backend.loadbalancer.method=drr"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.frontend.headers.STSSeconds=315360000"
