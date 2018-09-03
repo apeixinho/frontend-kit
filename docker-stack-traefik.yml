@@ -3,7 +3,7 @@ services:
   homepage2:
     image: homepage2
     networks:
-      - webgateway
+      - traefik_proxy
     deploy:
       # replicas: 1
       restart_policy:
@@ -14,15 +14,29 @@ services:
           memory: 60M
       labels:
         - "traefik.enable=true"
-        - "traefik.frontend.entryPoints=http,https"  
+        - "traefik.port=10002" 
+        - "traefik.protocol=http,https"
+        - "traefik.frontend.entryPoints=http,https"
         - "traefik.frontend.rule=Host:peixe.eu.org,www.peixe.eu.org"
+        - "traefik.docker.network=traefik_proxy"
         - "traefik.backend=homepage2"
+        - "traefik.backend.loadbalancer.stickiness=true"
         - "traefik.backend.loadbalancer.method=drr"
-        - "traefik.port=10002"
-        - "traefik.docker.network=webgateway"
+        - "traefik.backend=libresonic"
+        # - "traefik.frontend.rule=Host:plex.${DOMAINNAME}"
+        - "traefik.frontend.rule=Host: hoho.eu.org,www.hoho.eu.org"
+        - "traefik.frontend.headers.SSLRedirect=true"
+        - "traefik.frontend.headers.STSSeconds=315360000"
+        - "traefik.frontend.headers.browserXSSFilter=true"
+        - "traefik.frontend.headers.contentTypeNosniff=true"
+        - "traefik.frontend.headers.forceSTSHeader=true"
+        # - "traefik.frontend.headers.SSLHost=example.com"
+        # - "traefik.frontend.headers.STSIncludeSubdomains=true"
+        - "traefik.frontend.headers.STSPreload=true"
+        - "traefik.frontend.headers.frameDeny=true"
 
 networks:
-  webgateway:
+  traefik_proxy:
     driver: overlay
     external: true
 
