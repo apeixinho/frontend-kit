@@ -3,7 +3,7 @@ services:
   homepage1:
     image: homepage1
     networks:
-      - webgateway
+      - traefik_proxy
     deploy:
       # replicas: 1
       restart_policy:
@@ -14,15 +14,27 @@ services:
           memory: 60M
       labels:
         - "traefik.enable=true"
-        - "traefik.frontend.entryPoints=http,https"  
-        - "traefik.frontend.rule=Host:adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
+        - "traefik.port=10001" 
+        - "traefik.protocol=http,https"
+        - "traefik.frontend.entryPoints=http,https"
+        - "traefik.frontend.rule=Host: adolfo-peixinho.eu.org,www.adolfo-peixinho.eu.org"
+        - "traefik.docker.network=traefik_proxy"
         - "traefik.backend=homepage1"
+        - "traefik.backend.loadbalancer.stickiness=true"
         - "traefik.backend.loadbalancer.method=drr"
-        # - "traefik.backend.loadbalancer.stickiness=true"
-        - "traefik.port=10001"
-        - "traefik.docker.network=webgateway"
+        # - "traefik.frontend.rule=Host:plex.${DOMAINNAME}"
+        - "traefik.frontend.headers.SSLRedirect=true"
+        - "traefik.frontend.headers.STSSeconds=315360000"
+        - "traefik.frontend.headers.browserXSSFilter=true"
+        - "traefik.frontend.headers.contentTypeNosniff=true"
+        - "traefik.frontend.headers.forceSTSHeader=true"
+        # - "traefik.frontend.headers.SSLHost=example.com"
+        # - "traefik.frontend.headers.STSIncludeSubdomains=true"
+        - "traefik.frontend.headers.STSPreload=true"
+        - "traefik.frontend.headers.frameDeny=true"
+  
 
 networks:
-  webgateway:
+  traefik_proxy:
     driver: overlay
     external: true
