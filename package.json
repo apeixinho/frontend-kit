@@ -1,12 +1,12 @@
 {
-  "name": "frontend-kit",
+  "name": "homepage-starter-kit",
   "version": "1.0.0",
   "description": "A frontend kit from several perspectives",
-  "repository": "git@github.com:apeixinho/frontend-kit.git",
+  "repository": "git@github.com:apeixinho/homepage-starter-kit.git",
   "author": "apeixinho <a_peixinho@sapo.pt>",
   "license": "GPL-3.0",
   "engines": {
-    "node": "^8.11.3 || ^10.5.0"
+    "node": "^8.11.4 || ^10.11.0"
   },
   "scripts": {
     "clean": "rimraf dist",
@@ -45,8 +45,8 @@
     "postcss-loader": "^2.1.4",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
-    "url-loader": "^1.0.1",
+    "style-loader": "^0.23.0",
+    "url-loader": "~1.0.1",
     "webpack": "^3.12.0"
   }
 }
