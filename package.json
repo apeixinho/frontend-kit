@@ -24,9 +24,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/polyfill": "^7.0.0",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.4",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
