@@ -1,5 +1,5 @@
 # FROM node:8-alpine
-FROM node:10-alpine
+FROM node:10.12.0-alpine
 
 # Setup environment variables. 
 # If using one liner breakpoint '\' you can't use previously defined
