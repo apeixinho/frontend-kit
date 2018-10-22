@@ -2,12 +2,12 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+// const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
   debug: true,
-  noInfo: true // set to false to see a list of every file being bundled.
+  noInfo: false // set to false to see a list of every file being bundled.
 
 });
 
@@ -44,6 +44,7 @@ const devConfig = module.exports = {
     './index.js',
     './ejs/index.ejs'
   ],
+  mode: "development",
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
@@ -131,7 +132,9 @@ const devConfig = module.exports = {
           options: {
             // On development we want to see where the file is coming from, hence we preserve the [path]
             name: '[path][name].[ext]?hash=[hash:20]',
-            limit: 8192
+            limit: 8192,
+            fallback: 'responsive-loader',
+            quality: 85
           }
         }]
       },
@@ -159,13 +162,23 @@ const devConfig = module.exports = {
     //   $: "jquery",
     //   jQuery: "jquery",
     // }),
-    new GoogleFontsPlugin({
-      fonts: [{
-        family: "PT Sans"
-      }],
-      path: "fonts/",
-      filename: "fonts/fonts.css"
-    }),
+    // new GoogleFontsPlugin({
+    //   fonts: [{
+    //       family: "PT Sans"
+    //     }, {
+    //       family: "Open Sans"
+    //     },
+    //     {
+    //       family: "Roboto",
+    //       variants: ["400", "700italic"]
+    //     },
+    //     {
+    //       family: "Ubuntu"
+    //     },
+    //   ],
+    //   path: "fonts/",
+    //   filename: "fonts/fonts.css"
+    // }),
     new ExtractTextPlugin('styles.css', {
       allChunks: true
     }),
@@ -173,5 +186,3 @@ const devConfig = module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
-
-module.exports = devConfig;
