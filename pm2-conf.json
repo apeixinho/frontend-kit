@@ -1,11 +1,11 @@
 {
     "apps": [
         {
-            "name": "myhomepage1",
+            "name": "homepage1",
             "script": "serve-homepage.js",
             "max_restarts": 20,
             "instances": 2,
-            "max_memory_restart": "48M",
+            "max_memory_restart": "64M",
             "watch": false,
             "env": {
                 "PORT": 10001,
