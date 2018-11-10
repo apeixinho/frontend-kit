@@ -1,4 +1,5 @@
 import scrollSpy from './scrollspy';
+import autoType from './autotype';
 
 // on document ready
 document.addEventListener('DOMContentLoaded', function () {
@@ -51,4 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const menu = document.querySelector('nav');
   scrollSpy(menu, 875);
+
+  var id = 'type_text';
+
+  autoType(id, 2000, 170);
+
 });
