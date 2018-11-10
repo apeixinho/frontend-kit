@@ -4,6 +4,8 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
+// @import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
 /*-------------
  	Colors
 -------------*/
@@ -39,10 +41,12 @@ a {
   color: inherit;
   cursor: pointer;
   opacity: 0.85;
+
   &:hover,
   &:active {
     opacity: 1;
   }
+
   &.btn {
     color: $white;
     border-radius: 4px;
@@ -71,6 +75,7 @@ section {
   flex-direction: column;
   align-items: center;
   padding: 125px 100px;
+
   h3.title {
     color: $gray3;
     text-transform: capitalize;
@@ -78,6 +83,7 @@ section {
     margin-bottom: 35px;
     text-align: center;
   }
+
   p {
     max-width: 800px;
     text-align: center;
@@ -126,7 +132,7 @@ ul.grid {
 -------------*/
 header {
   background-color: $blue;
-  color: $white; 
+  color: $white;
   // border-bottom: 1px solid $beige;
   position: fixed;
   top: -300px;
@@ -135,6 +141,7 @@ header {
   z-index: 10;
   align-items: center;
   height: auto;
+
   // h2 {
   //   font-family: 'Quicksand', sans-serif;
   //   padding: 15px 50px;
@@ -146,17 +153,21 @@ header {
       width: 100%;
       flex-wrap: wrap;
     }
+
     ul li {
       transition: background-color .2s ease-in-out 0.1s;
       flex-grow: 1;
       text-align: center;
       font-weight: normal;
-      &:hover, &.active {
+
+      &:hover,
+      &.active {
         opacity: 1;
         background-color: $beige;
         color: $blue;
       }
     }
+
     ul li a {
       height: 100%;
       width: 100%;
@@ -172,6 +183,7 @@ header {
 @media (max-width: 700px) {
   header {
     flex-direction: column;
+
     h2 {
       margin-bottom: 15px;
     }
@@ -184,6 +196,7 @@ header {
     margin: 0;
     padding: 0;
     transition: all 0.3s;
+
     .nav-container {
       position: fixed;
       top: -400px;
@@ -191,28 +204,35 @@ header {
       width: 100%;
       background-color: $blue;
       opacity: 1;
+
       i {
         display: block;
       }
+
       span {
         display: block;
       }
-    } 
+    }
+
     .nav-container ul li {
       display: block;
       float: none;
-      width: 100%; 
+      width: 100%;
       transition: background-color .2s ease-in-out 0.1s;
-      &:hover, &.active {
+
+      &:hover,
+      &.active {
         opacity: 1;
         background-color: $beige;
         color: $blue;
       }
-    } 
+    }
+
     .nav-container ul li a {
       transform: translateY(-20px);
       transition: transform .2s ease-in-out 0.1s;
     }
+
     .nav-open {
       position: fixed;
       right: 10px;
@@ -226,6 +246,7 @@ header {
       border: 2px solid $blue;
       background-color: $beige;
     }
+
     .nav-open i {
       display: block;
       width: 20px;
@@ -234,13 +255,16 @@ header {
       border-radius: 4px;
       margin-left: 12px;
     }
+
     .nav-open i:nth-child(1) {
       margin-top: 14px;
     }
+
     .nav-open i:nth-child(2) {
       margin-top: 4px;
       opacity: 1;
     }
+
     .nav-open i:nth-child(3) {
       margin-top: 4px;
     }
@@ -294,6 +318,7 @@ header {
   min-height: 100vh;
   color: $white;
   text-align: center;
+
   .background-image {
     position: absolute;
     top: 0;
@@ -302,8 +327,8 @@ header {
     height: 100%;
     background-image: url(../images/hero-background.jpg);
     background-size: cover;
-    // background-color: $blue;
     z-index: -1;
+
     &:after {
       content: '';
       position: absolute;
@@ -312,17 +337,48 @@ header {
       width: 100%;
       height: 100%;
       background-color: $gray3;
-      opacity: 0.75;
+      opacity: 0.55;
     }
   }
+  .round {
+    width: 219px;
+    height: 219px;
+    border: 6px solid $blue;
+    border-radius: 50%;
+  }
+
   h1 {
     font: bold 60px 'Open Sans', sans-serif;
     margin-bottom: 15px;
   }
+
+  // #type_text {
+  //   font: bold 'Open Sans', sans-serif;
+  //   margin-top: 15px;
+  // }
+  h2 { 
+    // font: bold 'Open Sans', sans-serif, monospace;
+    // font: bold 300% Consolas, Monaco, monospace;
+    // font-family: 'Inconsolata', monospace;
+    // font: bold 'Inconsolata', monospace;
+    // font: bold Consolas, Monaco, monospace;
+    border-right: .1em solid ;
+    width: 16.5em;
+    // width: 16em; 
+    // width: 48ch;
+    // width: 40ch;
+    // margin: 2em 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 7s steps(21, end),
+               blink-caret .5s step-end infinite alternate;
+  }
+
   h3 {
     font: normal 28px 'Open Sans', sans-serif;
     margin-bottom: 40px;
   }
+
   a.btn {
     padding: 20px 46px;
   }
@@ -331,12 +387,15 @@ header {
 @media (max-width: 800px) {
   .hero {
     min-height: 600px;
+
     h1 {
       font-size: 48px;
     }
+
     h3 {
       font-size: 24px;
     }
+
     a.btn {
       padding: 15px 40px;
     }
@@ -359,10 +418,11 @@ header {
   background-size: cover;
   background-position: center;
   background-color: $gray1;
-  
+
   &.small {
     flex-basis: 40%;
   }
+
   &.large {
     flex-basis: 60%;
   }
@@ -370,6 +430,7 @@ header {
 
 @media (max-width: 1000px) {
   .our-work .grid li {
+
     &.small,
     &.large {
       flex-basis: 100%;
@@ -383,20 +444,24 @@ header {
 
 .features {
   background-color: $beige;
+
   .grid li {
     padding: 0 30px;
     flex-basis: 33%;
     text-align: center;
+
     i {
       font-size: 50px;
       color: $blue;
       margin-bottom: 25px;
     }
+
     h4 {
       color: $gray2;
       font-size: 20px;
       margin-bottom: 25px;
     }
+
     p {
       margin: 0;
     }
@@ -407,6 +472,7 @@ header {
   .features .grid li {
     flex-basis: 70%;
     margin-bottom: 65px;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -425,6 +491,7 @@ header {
 
 .reviews {
   background-color: $white;
+
   .quote {
     text-align: center;
     width: 80%;
@@ -434,9 +501,11 @@ header {
     margin-bottom: 20px;
     padding: 0;
   }
+
   .author {
     font-size: 18px;
     margin-bottom: 50px;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -448,6 +517,7 @@ header {
     .quote {
       font-size: 20px;
     }
+
     .author {
       font-size: 16px;
     }
@@ -460,6 +530,7 @@ header {
 
 .contact {
   background-color: $beige;
+
   form {
     display: flex;
     align-items: center;
@@ -467,6 +538,7 @@ header {
     flex-wrap: wrap;
     max-width: 800px;
     width: 80%;
+
     input {
       padding: 15px;
       flex: 1;
@@ -474,6 +546,7 @@ header {
       font-size: 18px;
       color: $gray2;
     }
+
     .btn {
       padding: 18px 42px;
     }
@@ -499,25 +572,31 @@ footer {
   color: $white;
   background-color: $gray3;
   padding: 60px 0;
+
   ul {
     display: flex;
     margin-bottom: 25px;
     font-size: 32px;
+
     li {
       margin: 0 8px;
+
       &:first-child {
         margin-left: 0;
       }
+
       &:last-child {
         margin-right: 0;
       }
     }
   }
+
   p {
     text-transform: uppercase;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 10px;
+
     a {
       color: $white;
     }
@@ -529,3 +608,6 @@ footer {
     padding: 80px 15px;
   }
 }
+
+@keyframes typing { from { width: 0; } }
+@keyframes blink-caret { 50% { border-color: transparent; } }
