@@ -53,13 +53,13 @@ const prodConfig = module.exports = {
   },
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: "vendor",
-          chunks: "initial",
-          minChunks: 2
-        }
-      }
+      // cacheGroups: {
+      //   commons: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: 'vendor',
+          chunks: 'all'
+        // }
+      // }
     }
   },
   mode: "production",
@@ -203,11 +203,6 @@ const prodConfig = module.exports = {
       },
       canPrint: false
     }),
-    // Use CommonsChunkPlugin to create a separate bundle
-    // of vendor libraries so that they're cached separately.
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor'
-    // }),
     new UglifyJSPlugin({
       sourceMap: true,
       parallel: true

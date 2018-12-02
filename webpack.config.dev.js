@@ -186,3 +186,5 @@ const devConfig = module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
+
+module.exports = devConfig;
