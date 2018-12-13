@@ -203,11 +203,6 @@ const prodConfig = module.exports = {
       },
       canPrint: false
     }),
-    // Use CommonsChunkPlugin to create a separate bundle
-    // of vendor libraries so that they're cached separately.
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor'
-    // }),
     new UglifyJSPlugin({
       sourceMap: true,
       parallel: true
