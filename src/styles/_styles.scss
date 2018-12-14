@@ -352,26 +352,9 @@ header {
     margin-bottom: 15px;
   }
 
-  // #type_text {
-  //   font: bold 'Open Sans', sans-serif;
-  //   margin-top: 15px;
-  // }
-  h2 { 
-    // font: bold 'Open Sans', sans-serif, monospace;
-    // font: bold 300% Consolas, Monaco, monospace;
-    // font-family: 'Inconsolata', monospace;
-    // font: bold 'Inconsolata', monospace;
-    // font: bold Consolas, Monaco, monospace;
-    border-right: .1em solid ;
-    width: 16.5em;
-    // width: 16em; 
-    // width: 48ch;
-    // width: 40ch;
-    // margin: 2em 1em;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 7s steps(21, end),
-               blink-caret .5s step-end infinite alternate;
+  h2 {
+    margin-top: 20px; 
+    font: bold 38px 'Open Sans', sans-serif, monospace;
   }
 
   h3 {
