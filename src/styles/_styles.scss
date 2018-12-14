@@ -141,6 +141,7 @@ header {
   z-index: 10;
   align-items: center;
   height: auto;
+  transition: all .7s ease-in-out .3s;
 
   // h2 {
   //   font-family: 'Quicksand', sans-serif;
@@ -362,10 +363,61 @@ header {
     margin-bottom: 40px;
   }
 
-  a.btn {
-    padding: 20px 46px;
+  .mouse {
+    display: block;
+    margin: 0 auto;
+    width: 26px;
+    height: 46px;
+    border-radius: 13px;
+    border: 2px solid $blue;
+    bottom: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -14px;
+    span {
+      display: block;
+      margin: 6px auto;
+      width: 2px;
+      height: 2px;
+      border-radius: 4px;
+      background: $blue;
+      border: 1px solid transparent;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+      animation-name: scroll;
+    }
+  }
+
+  // a.btn {
+  //   padding: 20px 46px;
+  // }
+}
+
+
+@-webkit-keyframes scroll {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }
+
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+
 
 @media (max-width: 800px) {
   .hero {
