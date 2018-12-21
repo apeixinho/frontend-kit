@@ -2,9 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
 
@@ -53,13 +50,8 @@ const prodConfig = module.exports = {
   },
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: "vendor",
-          chunks: "initial",
-          minChunks: 2
-        }
-      }
+      // include all types of chunks
+      chunks: 'all'
     }
   },
   mode: "production",
@@ -191,21 +183,6 @@ const prodConfig = module.exports = {
     // }),
     new ExtractTextPlugin('styles.[hash].css', {
       allChunks: true
-    }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessorOptions: {
-        map: {
-          inline: false,
-        },
-        discardComments: {
-          removeAll: true
-        }
-      },
-      canPrint: false
-    }),
-    new UglifyJSPlugin({
-      sourceMap: true,
-      parallel: true
     }),
     new CompressionPlugin({
       algorithm: "gzip"
