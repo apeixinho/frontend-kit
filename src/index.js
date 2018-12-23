@@ -1,5 +1,7 @@
 import './styles/index.scss';
 import './scripts/utils';
-import date from './scripts/sample';
+import {date, myage} from './scripts/sample';
 
 date('time');
+myage('my_age');
+

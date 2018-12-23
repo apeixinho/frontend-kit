@@ -518,7 +518,7 @@ header {
               line-height: 24px;
 
               a {
-                background-color: darken($blue, 0%);
+                // background-color: darken($blue, 0%);
                 padding-left: 3px;
                 padding-right: 3px;
                 color: $blue;
@@ -546,15 +546,11 @@ header {
               margin-bottom: 5px;
             }
           }
-
-
         }
       }
-
       .no-border {
         border: 0;
       }
-
     }
   }
 }
