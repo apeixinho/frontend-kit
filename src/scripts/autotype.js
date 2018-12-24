@@ -21,7 +21,7 @@ txtRotate.prototype.tick = function () {
   this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
   var that = this;
-  var delta = 300 - Math.random() * 100;
+  var delta = 150 - Math.random() * 100;
 
   if (this.isDeleting) {
     delta /= 2;
@@ -33,7 +33,7 @@ txtRotate.prototype.tick = function () {
   } else if (this.isDeleting && this.txt === '') {
     this.isDeleting = false;
     this.loopNum++;
-    delta = 500;
+    delta = 333;
   }
 
   setTimeout(function () {
@@ -50,7 +50,7 @@ window.onload = function () {
       new txtRotate(elements[i], JSON.parse(toRotate), period);
     }
   }
-  // INJECT CSS
+  // inject css
   var css = document.createElement("style");
   css.type = "text/css";
   css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";

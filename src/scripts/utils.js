@@ -3,7 +3,6 @@ import autoType from './autotype';
 
 // on document ready
 document.addEventListener('DOMContentLoaded', function () {
-
   //on window scroll
   window.onscroll = function () {
     // window is greater than 561px
@@ -14,12 +13,29 @@ document.addEventListener('DOMContentLoaded', function () {
       let topHeader = document.querySelector('header');
       let topHeaderHeight = topHeader.offsetHeight;
       let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-      // if scroll position is greater than header height add sticky class   
+      // if scroll position is greater than header height add sticky class
       if (scrollPosition > topHeaderHeight) {
         topHeader.classList.add("sticky");
       } else {
         topHeader.classList.remove("sticky");
       }
+    }
+    function isElementInViewport(el) {
+      var rect = el.getBoundingClientRect();
+      return rect.bottom > 0 &&
+        rect.right > 0 &&
+        rect.left < (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */ &&
+        rect.top < (window.innerHeight || document.documentElement.clientHeight) /* or $(window).height() */ ;
+    }
+
+    if (isElementInViewport(document.getElementsByClassName('user-data'))) {
+      var user_data_content_list = document.querySelector('.user-data-content').getElementsByTagName('li');
+      for (var it = 0; it < user_data_content_list.length; it++) {
+        // eslint-disable-next-line
+        console.log("added animated to "+user_data_content_list[it]);
+        user_data_content_list[it].addClass('animated fadeInRight delay-'+(it+1)+'s');
+      }
+      document.getElementsByClassName('continuate').addClass('animated fadeInRight delay-5s');
     }
   };
 
@@ -46,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
           document.querySelector('.nav-container').classList.remove("sticky");
         }, false);
       }
+
       var section_list = document.getElementsByTagName('section');
       for (var k = 0; k < section_list.length; k++) {
         section_list[k].addEventListener('click', function () {
@@ -57,12 +74,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   };
-  
+
   const menu = document.querySelector('nav');
   scrollSpy(menu, 875);
 
-  var id = 'type_text';
-
-  autoType(id, 2000, 170);
+  var element_id = 'type_text';
+  autoType(element_id, 2000, 170);
 
 });
