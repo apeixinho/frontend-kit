@@ -1,4 +1,4 @@
-import scrollSpy from './scrollspy';
+import VanillaScrollspy from 'vanillajs-scrollspy';
 import autoType from './autotype';
 
 // on document ready
@@ -20,22 +20,50 @@ document.addEventListener('DOMContentLoaded', function () {
         topHeader.classList.remove("sticky");
       }
     }
-    function isElementInViewport(el) {
-      var rect = el.getBoundingClientRect();
-      return rect.bottom > 0 &&
-        rect.right > 0 &&
-        rect.left < (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */ &&
-        rect.top < (window.innerHeight || document.documentElement.clientHeight) /* or $(window).height() */ ;
-    }
 
-    if (isElementInViewport(document.getElementsByClassName('user-data'))) {
-      var user_data_content_list = document.querySelector('.user-data-content').getElementsByTagName('li');
-      for (var it = 0; it < user_data_content_list.length; it++) {
-        // eslint-disable-next-line
-        console.log("added animated to "+user_data_content_list[it]);
-        user_data_content_list[it].addClass('animated fadeInRight delay-'+(it+1)+'s');
+    if (typeof document.documentElement != 'undefined') {
+      // is my face visible
+      var my_face = document.getElementById('my_face');
+      if (isVisibleOnScreen(my_face)) {
+        document.getElementById('my_face')
+        .classList
+        .add("animated", "bounceIn", "slow");
+      } else {
+        my_face
+        .classList
+        .remove("animated", "bounceIn", "slow");
       }
-      document.getElementsByClassName('continuate').addClass('animated fadeInRight delay-5s');
+      // about section is visible
+      var about_section = document.getElementById('about');
+      if (isVisibleOnScreen(about_section)) {
+        // document.getElementsByClassName("user-data")[0]
+        // .classList
+        // .add("animated", "fadeIn", "delay-1s");
+        var user_data_content_list =
+        document.querySelector('.user-data-content').getElementsByTagName('li');
+        for (var it = 0; it < user_data_content_list.length; it++) {
+          user_data_content_list[it]
+          .classList
+          .add("animated", "fadeInRight", "delay-" + (it + 1) + "s");
+        }
+        document.getElementsByClassName("continuate")[0]
+        .classList
+        .add("animated","fadeIn","delay-5s","slower");
+      }
+      //  else {
+        // document.getElementsByClassName("user-data")[0]
+        // .classList
+        // .remove("animated", "fadeIn", "delay-1s");
+        // var user_data_content_list1 = document.querySelector('.user-data-content').getElementsByTagName('li');
+        // for (var ite = 0; ite < user_data_content_list1.length; ite++) {
+        //   user_data_content_list[ite]
+        //   .classList
+        //   .remove("animated", "fadeInRight", "delay-" + (ite + 1) + "s");
+        // }
+         // document.getElementsByClassName("continuate")[0]
+        // .classList
+        // .remove("animated", "fadeIn","delay-5s","slower");
+      // }
     }
   };
 
@@ -75,8 +103,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  const menu = document.querySelector('nav');
-  scrollSpy(menu, 875);
+  function isVisibleOnScreen(elem) {
+    var rect = elem.getBoundingClientRect();
+    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+  }
+
+  const navbar = document.querySelector('nav');
+  const scrollspy = new VanillaScrollspy(navbar, 875);
+  scrollspy.init();
 
   var element_id = 'type_text';
   autoType(element_id, 2000, 170);

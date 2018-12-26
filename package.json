@@ -32,6 +32,7 @@
     "brotli-webpack-plugin": "^1.0.0",
     "compression-webpack-plugin": "^2.0.0",
     "css-loader": "^2.0.2",
+    "devicon": "^2.0.0",
     "ejs": "^2.6.1",
     "ejs-compiled-loader": "^1.1.0",
     "eslint": "^5.11.0",
@@ -54,6 +55,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
+    "vanillajs-scrollspy": "^2.0.3",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2"
   }
