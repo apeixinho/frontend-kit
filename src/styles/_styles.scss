@@ -370,7 +370,7 @@ header {
   }
 }
 
-@media (max-width: 641px) {
+@media (max-height: 381px), (orientation: landscape) {
   .hero {
     .round {
       margin-top: -60px;
