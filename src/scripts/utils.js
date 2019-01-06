@@ -1,3 +1,5 @@
+import VanillaScrollspy from 'vanillajs-scrollspy';
+
 let $ = window.$ = window.jQuery = require('jquery');
 
 $(document).ready(function () {
@@ -84,7 +86,7 @@ $(document).ready(function () {
 
       /* If the object is completely visible in the window, fadeIn it */
       if (bottom_of_window > bottom_of_object) {
- 
+
         $(this).animate({
           'opacity': '1',
           'margin-left': '0'
@@ -130,5 +132,9 @@ $(document).ready(function () {
       $(".nav-container").removeClass("sticky");
     }
   });
+
+  const navbar = document.querySelector('nav');
+  const scrollspy = new VanillaScrollspy(navbar, 875);
+  scrollspy.init();
 
 });

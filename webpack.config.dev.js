@@ -33,6 +33,7 @@ const devConfig = module.exports = {
     open: true, // open default browser while launching
     inline: true, // inline mode (set to false to disable including client scripts (like livereload)
     hot: true,
+    disableHostCheck: true,
     stats: {
       colors: true
     }

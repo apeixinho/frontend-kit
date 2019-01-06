@@ -2,9 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
+const BrotliPlugin = require("brotli-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: true,
@@ -47,14 +46,14 @@ const prodConfig = module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js'
   },
   optimization: {
     splitChunks: {
+      // include all types of chunks
       chunks: 'all'
     }
   },
-
   mode: "production",
   module: {
     rules: [{
@@ -142,8 +141,7 @@ const prodConfig = module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            // On development we want to see where the file is coming from, hence we preserve the [path]
-            name: '[path][name].[ext]?hash=[hash:20]',
+            name: '[name].[contenthash].[ext]',
             limit: 8192,
             fallback: 'responsive-loader',
             quality: 80
@@ -182,24 +180,14 @@ const prodConfig = module.exports = {
     //   path: "fonts/",
     //   filename: "fonts/fonts.css"
     // }),
-    new ExtractTextPlugin('styles.[hash].css', {
-      allChunks: true
+    new ExtractTextPlugin({
+      allChunks: true,
+      filename: '[name].[chunkhash].css'
     }),
-    new OptimizeCssAssetsPlugin({
-      cssProcessorOptions: {
-        map: {
-          inline: false,
-        },
-        discardComments: {
-          removeAll: true
-        }
-      },
-      canPrint: false
+    new CompressionPlugin({
+      algorithm: "gzip"
     }),
-    new UglifyJSPlugin({
-      sourceMap: true,
-      parallel: true
-    }),
+    new BrotliPlugin(),
     htmlWebpackPluginConfig
   ]
 };
