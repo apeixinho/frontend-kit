@@ -193,9 +193,11 @@ header {
       width: 100%;
       background-color: $blue;
       opacity: 1;
+
       i {
         display: block;
       }
+
       span {
         display: block;
       }
@@ -370,7 +372,8 @@ header {
   }
 }
 
-@media (max-height: 381px), (orientation: landscape) {
+
+@media (max-height: 421px) and (max-width: 841px) {
   .hero {
     .round {
       margin-top: -60px;
@@ -418,12 +421,13 @@ header {
     p {
       margin: 0;
     }
-    // a {
+
+    a {
       // background-color: darken($blue, 0%);
-      // padding-left: 3px;
-      // padding-right: 3px;
-      // color: $blue;
-    // }
+      padding-left: 3px;
+      padding-right: 3px;
+      color: $blue;
+    }
 
     .user-data {
 
@@ -506,6 +510,7 @@ header {
           }
         }
       }
+
       .no-border {
         border: 0;
       }
@@ -524,7 +529,7 @@ header {
 //   }
 // }
 
-@media (max-width: 560px) {
+@media (max-width: 561px) {
   .about .grid li {
     flex-basis: 100%;
   }
@@ -532,8 +537,9 @@ header {
   #about_description {
     padding-bottom: 40px;
   }
+
   #about_icons {
-    padding-left: 50%;
+    padding-left: 13%;
   }
 
 }
@@ -553,7 +559,7 @@ header {
     i {
       font-size: 50px;
       color: $blue;
-      margin:0 0 24px 12px;
+      margin: 0 0 24px 12px;
       // margin-bottom: 25px;
     }
 
@@ -580,7 +586,7 @@ header {
 //   }
 // }
 
-@media (max-width: 660px) {
+@media (max-width: 661px) {
   .skills .grid li {
     flex-basis: 100%;
   }
@@ -591,6 +597,7 @@ header {
 ---------------------*/
 
 .contact {
+
   // background-color: $beige;
   .btn {
     padding: 18px 42px;
@@ -640,6 +647,7 @@ footer {
     font-size: 14px;
     // color: rgba(255, 255, 255, 0.7);
     margin-bottom: 10px;
+
     a {
       color: $white;
     }
