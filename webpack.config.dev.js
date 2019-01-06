@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+// const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
@@ -33,6 +33,7 @@ const devConfig = module.exports = {
     open: true, // open default browser while launching
     inline: true, // inline mode (set to false to disable including client scripts (like livereload)
     hot: true,
+    disableHostCheck: true,
     stats: {
       colors: true
     }
@@ -44,9 +45,10 @@ const devConfig = module.exports = {
     './index.js',
     './ejs/index.ejs'
   ],
+  mode: "development",
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[hash].js'
   },
   module: {
     rules: [{
@@ -130,8 +132,10 @@ const devConfig = module.exports = {
           loader: 'url-loader',
           options: {
             // On development we want to see where the file is coming from, hence we preserve the [path]
-            name: '[path][name].[ext]?hash=[hash:20]',
-            limit: 8192
+            name: '[path][name].[hash].[ext]',
+            limit: 8192,
+            fallback: 'responsive-loader',
+            quality: 85
           }
         }]
       },
@@ -159,25 +163,26 @@ const devConfig = module.exports = {
     //   $: "jquery",
     //   jQuery: "jquery",
     // }),
-    new GoogleFontsPlugin({
-      fonts: [{
-          family: "PT Sans"
-        }, {
-          family: "Open Sans"
-        },
-        {
-          family: "Roboto",
-          variants: ["400", "700italic"]
-        },
-        {
-          family: "Ubuntu"
-        },
-      ],
-      path: "fonts/",
-      filename: "fonts/fonts.css"
-    }),
-    new ExtractTextPlugin('styles.css', {
-      allChunks: true
+    // new GoogleFontsPlugin({
+    //   fonts: [{
+    //       family: "PT Sans"
+    //     }, {
+    //       family: "Open Sans"
+    //     },
+    //     {
+    //       family: "Roboto",
+    //       variants: ["400", "700italic"]
+    //     },
+    //     {
+    //       family: "Ubuntu"
+    //     },
+    //   ],
+    //   path: "fonts/",
+    //   filename: "fonts/fonts.css"
+    // }),
+    new ExtractTextPlugin({
+      allChunks: true,
+      filename: '[name].css'
     }),
     htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),

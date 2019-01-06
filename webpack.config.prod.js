@@ -2,8 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
+const BrotliPlugin = require("brotli-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: true,
@@ -46,8 +46,15 @@ const prodConfig = module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js'
   },
+  optimization: {
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all'
+    }
+  },
+  mode: "production",
   module: {
     rules: [{
         test: /\.js$/,
@@ -134,9 +141,10 @@ const prodConfig = module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            // On development we want to see where the file is coming from, hence we preserve the [path]
-            name: '[path][name].[ext]?hash=[hash:20]',
-            limit: 8192
+            name: '[name].[contenthash].[ext]',
+            limit: 8192,
+            fallback: 'responsive-loader',
+            quality: 80
           }
         }]
       },
@@ -160,21 +168,26 @@ const prodConfig = module.exports = {
   plugins: [
     environmentPluginConfig,
     loaderOptionsPluginConfig,
-    //new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
+    // new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     // new webpack.ProvidePlugin({
     //   $: "jquery",
     //   jQuery: "jquery",
     // }),
-    new GoogleFontsPlugin({
-      fonts: [{
-        family: "PT Sans"
-      }, ],
-      path: "fonts/",
-      filename: "fonts/fonts.css"
+    // new GoogleFontsPlugin({
+    //   fonts: [{
+    //     family: "PT Sans"
+    //   }, ],
+    //   path: "fonts/",
+    //   filename: "fonts/fonts.css"
+    // }),
+    new ExtractTextPlugin({
+      allChunks: true,
+      filename: '[name].[chunkhash].css'
     }),
-    new ExtractTextPlugin('styles.[contentHash].css', {
-      allChunks: true
+    new CompressionPlugin({
+      algorithm: "gzip"
     }),
+    new BrotliPlugin(),
     htmlWebpackPluginConfig
   ]
 };
