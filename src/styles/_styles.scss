@@ -64,10 +64,10 @@ hr {
   margin-bottom: 80px;
 }
 
-img {
-  width: 100%;
-  height: 100%;
-}
+// img {
+//   width: 100%;
+//   height: 100%;
+// }
 
 section {
   display: flex;
@@ -376,7 +376,7 @@ header {
 @media (max-height: 421px) and (max-width: 841px) {
   .hero {
     .round {
-      margin-top: -60px;
+      margin-top: -80px;
       width: 159px;
       height: 159px;
       border: 6px solid $blue;
@@ -396,7 +396,7 @@ header {
  	About Section
 ---------------------*/
 .about {
-  background-color: $beige;
+  // background-color: $beige;
   border-top: solid 6px $blue;
   overflow: hidden;
 
@@ -472,11 +472,13 @@ header {
               i {
                 background-color: $beige;
               }
-
+              img {
+                margin-left: -13px;
+              }
             }
 
             .user-data-text {
-              margin-left: 15px;
+              margin-left: 34px;
               line-height: 24px;
 
               a {
@@ -557,8 +559,9 @@ header {
     text-align: center;
 
     i {
-      font-size: 50px;
-      color: $blue;
+      font-size: 4em;
+      // font-size: 50px;
+      // color: $blue;
       margin: 0 0 24px 12px;
       // margin-bottom: 25px;
     }
@@ -570,7 +573,7 @@ header {
     }
 
     p {
-      margin: 0;
+      margin: 2px 4px 12px 4px;
     }
   }
 }
