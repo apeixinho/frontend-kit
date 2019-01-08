@@ -373,12 +373,12 @@ header {
 }
 
 
-@media (max-height: 421px) and (max-width: 841px) {
+@media (max-height: 421px), (max-width: 841px) {
   .hero {
     .round {
       margin-top: -80px;
-      width: 159px;
-      height: 159px;
+      width: 149px;
+      height: 149px;
       border: 6px solid $blue;
       border-radius: 50%;
     }
@@ -386,7 +386,7 @@ header {
     h2 {
       margin: 16px 0;
       padding: 0 30px;
-      font: bold 28px 'Open Sans', 'Quicksand', sans-serif, monospace;
+      font: bold 24px 'Open Sans', 'Quicksand', sans-serif, monospace;
     }
   }
 }
