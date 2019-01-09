@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
-const htmlMinifier = require('html-minifier');
+// const htmlMinifier = require('html-minifier');
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: true,
@@ -150,44 +150,47 @@ const prodConfig = module.exports = {
           }
         }]
       },
+      // {
+      //   test: /\.(gif|png|jpe?g|svg)$/i,
+      //   use: [
+      //     'file-loader',
+      //     {
+      //       loader: 'image-webpack-loader',
+      //       options: {
+      //         bypassOnDebug: true, // webpack@1.x
+      //         // disable: true, // webpack@2.x and newer
+      //         name: '[name].[contenthash].[ext]',
+      //         gifsicle: {
+      //           enabled: false
+      //         },
+      //       },
+      //     },
+      //   ],
+      // },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              // disable: true, // webpack@2.x and newer
-              name: '[name].[contenthash].[ext]'
-            },
-          },
-        ],
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            mimetype: 'image/svg+xml',
+            name: 'fonts/[name].[contenthash].[ext]'
+          }
+        }]
       },
-      // {
-      //   test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      //   use: [{
-      //     loader: 'url-loader',
-      //     options: {
-      //       limit: 8192,
-      //       mimetype: 'image/svg+xml',
-      //       name: 'fonts/[name].[contenthash].[ext]'
-      //     }
-      //   }]
-      // },
-      // {
-      //   // Load all images as base64 encoding if they are smaller than 8192 bytes
-      //   test: /\.(jpe?g|png|gif|ico)$/i,
-      //   use: [{
-      //     loader: 'url-loader',
-      //     options: {
-      //       name: '[name].[contenthash].[ext]',
-      //       limit: 8192,
-      //       fallback: 'responsive-loader',
-      //       quality: 85
-      //     }
-      //   }]
-      // },
+      {
+        // Load all images as base64 encoding if they are smaller than 8192 bytes
+        test: /\.(jpe?g|png|gif|ico)$/i,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            name: '[name].[contenthash].[ext]',
+            limit: 8192,
+            fallback: 'responsive-loader',
+            quality: 85
+          }
+        }]
+      },
       { // font-awesome
         test: /font-awesome\.config\.js/,
         use: [{
