@@ -1,58 +1,49 @@
-var txtRotate = function (el, toRotate, period) {
-  this.toRotate = toRotate;
-  this.el = el;
-  this.loopNum = 0;
-  this.period = parseInt(period, 10) || 2000;
-  this.txt = '';
-  this.tick();
-  this.isDeleting = false;
-};
+var dataset = ["Hi, and welcome to my homepage.", "I'm a passionate full-stack developer"];
+var datasetIndex = 0;
+var data;
+var pause = 1400;
+var addTime = 150;
+var removeTime = 120;
+var letterIndex = 0;
+var currentInterval;
 
-txtRotate.prototype.tick = function () {
-  var i = this.loopNum % this.toRotate.length;
-  var fullTxt = this.toRotate[i];
+var autoType = document.getElementById("autoType");
 
-  if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-  } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
+function textRotation() {
+  if (datasetIndex == dataset.length) {
+    datasetIndex = 0;
   }
 
-  this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+  data = dataset[datasetIndex];
+  letterIndex = 0;
+  autoType.className = "";
+  currentInterval = window.setInterval(addLetter, addTime);
+}
 
-  var that = this;
-  var delta = 150 - Math.random() * 100;
+function addLetter() {
+  autoType.innerHTML += data.charAt(letterIndex);
+  letterIndex += 1;
 
-  if (this.isDeleting) {
-    delta /= 2;
+  if (letterIndex > data.length) {
+    autoType.className = "caretAnimation";
+    window.clearInterval(currentInterval);
+    window.setTimeout(startRemove, pause);
   }
+}
 
-  if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 333;
+function startRemove() {
+  currentInterval = window.setInterval(removeLetter, removeTime);
+}
+
+function removeLetter() {
+  var currentString = autoType.innerHTML;
+  autoType.innerHTML = currentString.slice(0, -1);
+
+  if (currentString.length < 1) {
+    window.clearInterval(currentInterval);
+    datasetIndex += 1;
+    textRotation();
   }
+}
 
-  setTimeout(function () {
-    that.tick();
-  }, delta);
-};
-
-window.onload = function () {
-  var elements = document.getElementsByClassName('txt-rotate');
-  for (var i = 0; i < elements.length; i++) {
-    var toRotate = elements[i].getAttribute('data-rotate');
-    var period = elements[i].getAttribute('data-period');
-    if (toRotate) {
-      new txtRotate(elements[i], JSON.parse(toRotate), period);
-    }
-  }
-  // inject css
-  var css = document.createElement("style");
-  css.type = "text/css";
-  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
-  document.body.appendChild(css);
-};
+window.onload = window.setTimeout(textRotation, 500);

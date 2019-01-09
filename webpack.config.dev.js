@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
@@ -23,8 +24,15 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
   DEBUG: false,
 });
 
+const miniCssExtractPluginConfig = new MiniCssExtractPlugin({
+  // Options similar to the same options in webpackOptions.output
+  // both options are optional
+  filename: '[name].css',
+  chunkFilename: '[id].css'
+});
+
 const devConfig = module.exports = {
-  devtool: 'source-map',
+  // devtool: 'source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'), // directory or URL to serve HTML content from.
     historyApiFallback: true, // fallback to /index.html for Single Page Applications.
@@ -60,29 +68,38 @@ const devConfig = module.exports = {
         ],
       },
       {
-        test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract({
-          use: [{
-              // translates CSS into CommonJS
-              loader: "css-loader",
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              // compiles Sass to CSS
-              loader: "sass-loader",
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true
-              }
-            }
-            // Please note we are not running postcss here
-          ],
-          fallback: 'style-loader'
-        })
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
+      // {
+      //   test: /\.(scss|css)$/,
+      //   use: ExtractTextPlugin.extract({
+      //     use: [{
+      //         // translates CSS into CommonJS
+      //         loader: "css-loader",
+      //         options: {
+      //           sourceMap: true
+      //         }
+      //       },
+      //       {
+      //         // compiles Sass to CSS
+      //         loader: "sass-loader",
+      //         options: {
+      //           outputStyle: 'expanded',
+      //           sourceMap: true,
+      //           sourceMapContents: true
+      //         }
+      //       }
+      //       // Please note we are not running postcss here
+      //     ],
+      //     fallback: 'style-loader'
+      //   })
+      // },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
         use: [{
@@ -180,9 +197,10 @@ const devConfig = module.exports = {
     //   path: "fonts/",
     //   filename: "fonts/fonts.css"
     // }),
-    new ExtractTextPlugin('styles.css', {
-      allChunks: true
-    }),
+    // new ExtractTextPlugin('styles.css', {
+    //   allChunks: true
+    // }),
+    miniCssExtractPluginConfig,
     htmlWebpackPluginConfig,
     new webpack.HotModuleReplacementPlugin(),
   ],

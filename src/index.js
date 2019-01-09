@@ -1,7 +1,7 @@
 import './styles/index.scss';
-import './scripts/utils';
-import {date, myage} from './scripts/sample';
+import './scripts/otherUtils';
+import {deployDate, myAge} from './scripts/dateUtils';
 
-date('time');
-myage('my_age');
+deployDate('deployDate');
+myAge('myAge');
 
