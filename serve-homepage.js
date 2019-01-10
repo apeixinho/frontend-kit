@@ -20,7 +20,7 @@ app.use(helmet.contentSecurityPolicy({
     scriptSrc: ["'self'"],
     imgSrc: ["'self'"]
   },
-  disableAndroid: false
+  disableAndroid: true
 }));
 
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
