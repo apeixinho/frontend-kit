@@ -16,9 +16,9 @@ app.use(helmet({
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    styleSrc: ["'self'"],
-    scriptSrc: ["'self'"],
-    imgSrc: ["'self'"]
+    styleSrc: ["'self'", "'unsafe-inline'"],
+    scriptSrc: ["'self'", "'unsafe-inline'"],
+    imgSrc: ["'self'", "'data:'","'https:'"]
   },
   disableAndroid: true
 }));
