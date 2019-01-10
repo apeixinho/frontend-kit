@@ -15,19 +15,22 @@ app.use(helmet({
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'"]
+    defaultSrc: ["'self'"],
+    styleSrc: ["'self'"],
+    scriptSrc: ["'self'"],
+    imgSrc: ["'self'"]
   },
-  disableAndroid: true
+  disableAndroid: false
 }));
 
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
-// define path from where to server static files, in our case 
+// define path from where to server static files, in our case
 // root directory so we don't need to add any path
 //app.use(express.static(path.join(__dirname)));
 app.use(express.static('dist'))
 
-// start listening on port 
+// start listening on port
 app.listen(port, (err) => {
   if (err) {
     // eslint-disable-next-line
