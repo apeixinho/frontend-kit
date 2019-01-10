@@ -8,7 +8,7 @@ const deployDate = id => {
   const deployYear = deployDate.getFullYear();
   const deployMonth = months[deployDate.getMonth()];
   const deployDay = deployDate.getDay();
-  timeElement.innerHTML = ""+deployYear+"/" + deployMonth+"/" + deployDay
+  timeElement.innerHTML = "Last built on "+deployMonth+" " + deployDay+" of " + deployYear
   // timeElement.innerHTML = date;
 }
 

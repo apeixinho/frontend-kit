@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const htmlMinifier = require('html-minifier');
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
@@ -19,11 +20,15 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
 
 const hashedModuleIdsPluginConfig = new webpack.HashedModuleIdsPlugin();
 
+const copyWebpackPluginConfig = new CopyWebpackPlugin([{
+  from: 'docs/apeixinho-CV.pdf',
+  to: '[name].[ext]',
+  toType: 'template'
+}]);
+
 const miniCssExtractPluginConfig = new MiniCssExtractPlugin({
-  // Options similar to the same options in webpackOptions.output
-  // both options are optional
-  filename: '[name]_[contenthash].css',
-  chunkFilename: '[id]_[hash].css'
+  filename: '[name].[contenthash].css',
+  chunkFilename: '[id].[hash].css'
 });
 
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -59,11 +64,10 @@ const prodConfig = module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash:8].js'
+    filename: '[name].[contenthash].js'
   },
   optimization: {
     splitChunks: {
-      // include all types of chunks
       chunks: 'all',
       minSize: 4000,
       maxSize: 244000
@@ -124,7 +128,7 @@ const prodConfig = module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            name: 'fonts/[name]_[contenthash].[ext]'
+            name: 'fonts/[name].[contenthash].[ext]'
           }
         }]
       },
@@ -135,7 +139,7 @@ const prodConfig = module.exports = {
           options: {
             limit: 8192,
             mimetype: 'application/font-woff',
-            name: 'fonts/[name]_[contenthash].[ext]'
+            name: 'fonts/[name].[contenthash].[ext]'
           }
         }]
       },
@@ -211,6 +215,7 @@ const prodConfig = module.exports = {
     environmentPluginConfig,
     loaderOptionsPluginConfig,
     hashedModuleIdsPluginConfig,
+    copyWebpackPluginConfig,
     // new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     // new webpack.ProvidePlugin({
     //   $: "jquery",

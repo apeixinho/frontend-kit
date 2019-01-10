@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // window is greater than 560px
     if (typeof document.documentElement.clientWidth !=
       'undefined' && document.documentElement.clientWidth > 560) {
-
       var topHeader = document.querySelector('header');
       var topHeaderHeight = topHeader.offsetHeight;
       var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
@@ -58,17 +57,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var skill_grid = document.getElementById('skill_grid');
     if (isVisibleOnScreen(skill_grid)) {
-      var skill_grid_list = document.getElementById('skill_grid').getElementsByTagName('li');
-      for (it = 0; it < skill_grid_list.length; it++) {
-        skill_grid_list[it].addEventListener('mouseover', function () {
-          this.classList.add("animated", "tada");
-        }, false);
+      var skill_grid_list = skill_grid.getElementsByTagName('li');
+      if (typeof document.documentElement.clientWidth !=
+        'undefined' && document.documentElement.clientWidth > 560) {
+        for (it = 0; it < skill_grid_list.length; it++) {
+          skill_grid_list[it].addEventListener('mouseenter', function () {
+            this.classList.add("animated", "tada");
+          }, false);
+        }
+        for (it = 0; it < skill_grid_list.length; it++) {
+          skill_grid_list[it].addEventListener('mouseleave', function () {
+            this.classList.remove("animated", "tada");
+          }, false);
+        }
+      } else {
+        for (it = 0; it < skill_grid_list.length; it++) {
+          skill_grid_list[it].addEventListener('touchstart', function () {
+            this.classList.add("animated", "tada");
+          }, false);
+        }
+        for (it = 0; it < skill_grid_list.length; it++) {
+          skill_grid_list[it].addEventListener('touchend', function () {
+            this.classList.remove("animated", "tada");
+          }, false);
+        }
       }
-      for (it = 0; it < skill_grid_list.length; it++) {
-        skill_grid_list[it].addEventListener('mouseleave', function () {
-          this.classList.remove("animated", "tada");
-        }, false);
-      }
+    }
+    var emailContact = document.getElementById('emailContact');
+    if (isVisibleOnScreen(emailContact)) {
+      if (typeof document.documentElement.clientWidth !=
+        'undefined' && document.documentElement.clientWidth > 560) {
+          emailContact.addEventListener('mouseenter', function () {
+            var cleanEmail = this.getAttribute('href').replace(/y|u|k/g,'');
+            this.setAttribute('href',cleanEmail);
+          }, false);
+        }else{
+          emailContact.addEventListener('touchstart', function () {
+            var cleanEmail = this.getAttribute('href').replace(/y|u|k/g,'');
+            this.setAttribute('href',cleanEmail);
+          }, false);
+        }
     }
   };
 
@@ -95,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
           document.querySelector('.nav-container').classList.remove("sticky");
         }, false);
       }
-
       var section_list = document.getElementsByTagName('section');
       for (it = 0; it < section_list.length; it++) {
         section_list[it].addEventListener('click', function () {
@@ -107,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   };
-
 
   function isVisibleOnScreen(elem) {
     var rect = elem.getBoundingClientRect();

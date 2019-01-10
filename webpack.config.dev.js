@@ -2,8 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const loaderOptionsPluginConfig = new webpack.LoaderOptionsPlugin({
   minimize: false,
@@ -25,11 +26,15 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
 });
 
 const miniCssExtractPluginConfig = new MiniCssExtractPlugin({
-  // Options similar to the same options in webpackOptions.output
-  // both options are optional
   filename: '[name].css',
   chunkFilename: '[id].css'
 });
+
+const copyWebpackPluginConfig = new CopyWebpackPlugin([{
+  from: 'docs/apeixinho-CV.pdf',
+  to: '[name].[ext]',
+  toType: 'template'
+}]);
 
 const devConfig = module.exports = {
   // devtool: 'source-map',
@@ -175,6 +180,7 @@ const devConfig = module.exports = {
   plugins: [
     environmentPluginConfig,
     loaderOptionsPluginConfig,
+    copyWebpackPluginConfig,
     // new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
     // new webpack.ProvidePlugin({
     //   $: "jquery",
