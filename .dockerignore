@@ -5,7 +5,7 @@
 # Docker stuff
 dockerfile
 Dockerfile
-docker-compose.yml
+docker-compose*.yml
 docker-run*.txt
 
 # compiled output
