@@ -15,20 +15,32 @@ app.use(helmet({
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'","'https:'"],
-    styleSrc: ["'self'","'https:'"],
-    scriptSrc: ["'self'","'https:'"],
-    imgSrc: ["'self'","'* data:'","'https:'"],
-    objectSrc: ["'none'"]
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'"],
+    styleSrc: ["'self'"],
+    imgSrc: ["'self'", "data:"],
+    fontSrc: ["'self'"],
+    mediaSrc: ["'none'"],
+    objectSrc: ["'none'"],
+    frameSrc: ["'none'"],
+    frameAncestors: ["'none'"],
+    workerSrc: ["'none'"],
+    formAction: ["'none'"],
+    blockAllMixedContent,
   },
   disableAndroid: true
 }));
 
-app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+; block-all-mixed-content;
 
-// define path from where to server static files, in our case
+
+app.use(helmet.referrerPolicy({
+  policy: 'same-origin'
+}));
+
+// Define path from where to server static files, in our case
 // root directory so we don't need to add any path
-//app.use(express.static(path.join(__dirname)));
+// app.use(express.static(path.join(__dirname)));
 app.use(express.static('dist'))
 
 // start listening on port
@@ -59,7 +71,7 @@ process.on("SIGINT", () => {
   setTimeout((e) => {
     // eslint-disable-next-line
     console.log("Forcing server close !!!", e)
-    //cleanUp()
+    // cleanUp()
     process.exit(1)
   }, 3000)
 });
