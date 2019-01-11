@@ -26,7 +26,7 @@ app.use(helmet.contentSecurityPolicy({
     frameAncestors: ["'none'"],
     workerSrc: ["'none'"],
     formAction: ["'none'"],
-    blockAllMixedContent,
+    blockAllMixedContent: true
   },
   disableAndroid: true
 }));
