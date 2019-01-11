@@ -1,7 +1,6 @@
-# FROM node:8-alpine
-FROM node:10.12.0-alpine
+FROM node:lts-alpine
 
-# Setup environment variables. 
+# Setup environment variables.
 # If using one liner breakpoint '\' you can't use previously defined
 # variables in posterior variables. Just define ENV per line
 ENV NODE_ENV=production
@@ -20,7 +19,7 @@ RUN apk update && apk upgrade && \
 
 # ENV PATH=${PATH}:"$(yarn global bin)"
 
-RUN addgroup -S app && adduser -S -g app app    
+RUN addgroup -S app && adduser -S -g app app
 
 COPY . /home/app/site1
 # COPY pm2-conf.json homepage.js dist /home/node/
@@ -35,15 +34,15 @@ RUN chown -R app:app /home/app
 # RUN yarn global add pm2 --no-lockfile --ignore-scripts --no-save && \
     # yarn global add express helmet --no-lockfile --ignore-scripts --no-save
 # RUN npm i -g pm2 --no-save --no-package-lock --ignore-scripts && \
-    # npm i -g express helmet --no-save --no-package-lock --ignore-scripts 
+    # npm i -g express helmet --no-save --no-package-lock --ignore-scripts
 
 USER app
 
 WORKDIR /home/app/site1
 
-RUN yarn 
+RUN yarn
 
-RUN yarn run build:prod 
+RUN yarn run build:prod
 
 EXPOSE 10001
 
