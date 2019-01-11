@@ -15,10 +15,11 @@ app.use(helmet({
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'"],
-    styleSrc: ["'self'", "'unsafe-inline'"],
-    scriptSrc: ["'self'", "'unsafe-inline'"],
-    imgSrc: ["'self'", "'data:'","'https:'"]
+    defaultSrc: ["'self'","'https:'"],
+    styleSrc: ["'self'","'https:'"],
+    scriptSrc: ["'self'","'https:'"],
+    imgSrc: ["'self'","'* data:'","'https:'"],
+    objectSrc: ["'none'"]
   },
   disableAndroid: true
 }));
