@@ -36,7 +36,7 @@ $gray2:#282828;
 }
 
 html {
-  font: normal 1em 'Open Sans', 'Quicksand', sans-serif;
+  font: normal 1em 'Open Sans', sans-serif;
   color: $gray2;
 }
 
@@ -95,8 +95,8 @@ section {
 
   h3.title {
     color: $gray2;
-    text-transform: capitalize;
-    font: bold 32px 'Open Sans', 'Quicksand', sans-serif;
+    text-transform: uppercase;
+    font: bold 32px 'Open Sans', sans-serif;
     margin-bottom: 35px;
     text-align: center;
   }
@@ -361,7 +361,7 @@ header {
     // margin: 24px 0;
     padding: 0 40px;
     // font: bold 38px 'Open Sans', 'Quicksand', sans-serif, monospace;
-    font: bold 4em 'Open Sans', 'Quicksand', sans-serif, monospace;
+    font: bold 4em 'Open Sans', sans-serif, monospace;
   }
 
   .mouse {
@@ -408,7 +408,7 @@ header {
       //margin: 16px 0;
       padding: 0 30px;
       // font: bold 24px 'Open Sans', 'Quicksand', sans-serif, monospace;
-      font: bold 2em 'Open Sans', 'Quicksand', sans-serif, monospace;
+      font: bold 1.8em 'Open Sans', sans-serif, monospace;
     }
 
     .mouse {
@@ -745,13 +745,14 @@ footer {
   p {
     // text-transform: uppercase;
     // font-size: 14px;
-    font-size: 1.8em // color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1em // color: rgba(255, 255, 255, 0.7);
       // margin-bottom: 10px;
-
-      a {
-      color: $white;
-    }
   }
+
+  p a {
+    color: $blue2;
+  }
+
 }
 
 
