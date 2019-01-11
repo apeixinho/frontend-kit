@@ -11,12 +11,9 @@ ENV NODE_ENV=production
 # https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
 
 
-# RUN apk update && apk upgrade && \
-#     apk add --no-cache build-base git && \
-#     rm -f /var/cache/apk/*
-
 RUN apk update && apk upgrade && \
-    rm -f /var/cache/apk/*
+  apk add --no-cache build-base git && \
+  rm -f /var/cache/apk/*
 
 # ENV PATH=${PATH}:"$(yarn global bin)"
 
