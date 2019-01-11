@@ -26,7 +26,6 @@ bower_components
 *.launch
 .editorconfig
 .settings/
-.eslintrc.json
 
 # misc
 .sass-cache
