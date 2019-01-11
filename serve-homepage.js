@@ -31,9 +31,6 @@ app.use(helmet.contentSecurityPolicy({
   disableAndroid: true
 }));
 
-; block-all-mixed-content;
-
-
 app.use(helmet.referrerPolicy({
   policy: 'same-origin'
 }));
