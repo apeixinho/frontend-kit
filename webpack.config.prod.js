@@ -20,12 +20,6 @@ const environmentPluginConfig = new webpack.EnvironmentPlugin({
 
 const hashedModuleIdsPluginConfig = new webpack.HashedModuleIdsPlugin();
 
-const copyWebpackPluginConfig = new CopyWebpackPlugin([{
-  from: 'docs/apeixinho-CV.pdf',
-  to: '[name].[ext]',
-  toType: 'template'
-}]);
-
 const miniCssExtractPluginConfig = new MiniCssExtractPlugin({
   filename: '[name].[contenthash].css',
   chunkFilename: '[id].[hash].css'
@@ -215,22 +209,21 @@ const prodConfig = module.exports = {
     environmentPluginConfig,
     loaderOptionsPluginConfig,
     hashedModuleIdsPluginConfig,
-    copyWebpackPluginConfig,
-    // new CleanWebpackPlugin(path.resolve(__dirname, 'dist')),
-    // new webpack.ProvidePlugin({
-    //   $: "jquery",
-    //   jQuery: "jquery",
-    // }),
-    // new GoogleFontsPlugin({
-    //   fonts: [{
-    //     family: "PT Sans"
-    //   }, ],
-    //   path: "fonts/",
-    //   filename: "fonts/fonts.css"
-    // }),
-    // new ExtractTextPlugin('styles.[hash].css', {
-    //   allChunks: true
-    // }),
+    new CopyWebpackPlugin([{
+      from: 'docs/apeixinho-CV.pdf',
+      to: '[name].[ext]',
+      toType: 'template'
+    }]),
+    new CopyWebpackPlugin([{
+      from: 'sitemap.xml',
+      to: '[name].[ext]',
+      toType: 'template'
+    }]),
+    new CopyWebpackPlugin([{
+      from: 'robots.txt',
+      to: '[name].[ext]',
+      toType: 'template'
+    }]),
     miniCssExtractPluginConfig,
     new CompressionPlugin({
       algorithm: "gzip"
