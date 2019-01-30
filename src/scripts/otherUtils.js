@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var topHeader = document.querySelector('header');
       var topHeaderHeight = topHeader.offsetHeight;
       var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-      // if scroll position is greater than header height add sticky class
+      // if scroll position is greater than header height, add sticky class
       if (scrollPosition > topHeaderHeight) {
         topHeader.classList.add("sticky");
       } else {
@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var skill_grid_list = skill_grid.getElementsByTagName('li');
       if (typeof document.documentElement.clientWidth !=
         'undefined' && document.documentElement.clientWidth > 560) {
+        // if mouse interface
         for (it = 0; it < skill_grid_list.length; it++) {
           skill_grid_list[it].addEventListener('mouseenter', function () {
             this.classList.add("animated", "tada");
@@ -70,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.classList.remove("animated", "tada");
           }, false);
         }
+        // else consider as touch interface
       } else {
         for (it = 0; it < skill_grid_list.length; it++) {
           skill_grid_list[it].addEventListener('touchstart', function () {
@@ -84,19 +86,39 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
     var emailContact = document.getElementById('emailContact');
-    if (isVisibleOnScreen(emailContact)) {
+    var contactButtons = document.getElementById('contactButtons');
+    var resumeDownload = document.getElementById('resumeDownload');
+
+    if (isVisibleOnScreen(contactButtons)) {
+
+      resumeDownload.classList.add("animated", "fadeInRight", "slow");
+      emailContact.classList.add("animated", "fadeInLeft", "slow");
+
+      // if mouse interface
       if (typeof document.documentElement.clientWidth !=
         'undefined' && document.documentElement.clientWidth > 560) {
-          emailContact.addEventListener('mouseenter', function () {
-            var cleanEmail = this.getAttribute('href').replace(/y|u|k/g,'');
-            this.setAttribute('href',cleanEmail);
-          }, false);
-        }else{
-          emailContact.addEventListener('touchstart', function () {
-            var cleanEmail = this.getAttribute('href').replace(/y|u|k/g,'');
-            this.setAttribute('href',cleanEmail);
-          }, false);
-        }
+
+        emailContact.addEventListener('mouseenter', function () {
+          var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
+          this.setAttribute('href', cleanEmail);
+        }, false);
+        emailContact.addEventListener('mouseleave', function () {
+          this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
+        }, false);
+        // else consider as touch interface
+      } else {
+
+        emailContact.addEventListener('touchstart', function () {
+          var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
+          this.setAttribute('href', cleanEmail);
+        }, false);
+        emailContact.addEventListener('touchend', function () {
+          this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
+        }, false);
+      }
+    } else {
+      resumeDownload.classList.remove("animated", "fadeInRight", "slow");
+      emailContact.classList.remove("animated", "fadeInLeft", "slow");
     }
   };
 
