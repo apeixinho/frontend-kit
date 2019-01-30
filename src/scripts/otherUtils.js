@@ -94,17 +94,28 @@ document.addEventListener('DOMContentLoaded', function () {
       resumeDownload.classList.add("animated", "fadeInRight", "slow");
       emailContact.classList.add("animated", "fadeInLeft", "slow");
 
+      ['click', 'mouseenter', 'touchstart'].forEach(evt =>
+        emailContact.addEventListener(evt, function () {
+          var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
+          this.setAttribute('href', cleanEmail);
+        }, false));
+
+      ['blur', 'mouseleave', 'touchend'].forEach(evt =>
+        emailContact.addEventListener(evt, function () {
+          this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
+        }, false));
+
       // if mouse interface
       // if (typeof document.documentElement.clientWidth !=
       //   'undefined' && document.documentElement.clientWidth > 560) {
 
-      emailContact.addEventListener('mouseenter', function () {
-        var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
-        this.setAttribute('href', cleanEmail);
-      }, false);
-      emailContact.addEventListener('mouseleave', function () {
-        this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
-      }, false);
+      // emailContact.addEventListener('mouseenter', function () {
+      //   var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
+      //   this.setAttribute('href', cleanEmail);
+      // }, false);
+      // emailContact.addEventListener('mouseleave', function () {
+      //   this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
+      // }, false);
       // else consider as touch interface
       // } else {
 
