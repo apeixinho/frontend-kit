@@ -95,27 +95,27 @@ document.addEventListener('DOMContentLoaded', function () {
       emailContact.classList.add("animated", "fadeInLeft", "slow");
 
       // if mouse interface
-      if (typeof document.documentElement.clientWidth !=
-        'undefined' && document.documentElement.clientWidth > 560) {
+      // if (typeof document.documentElement.clientWidth !=
+      //   'undefined' && document.documentElement.clientWidth > 560) {
 
-        emailContact.addEventListener('mouseenter', function () {
-          var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
-          this.setAttribute('href', cleanEmail);
-        }, false);
-        emailContact.addEventListener('mouseleave', function () {
-          this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
-        }, false);
-        // else consider as touch interface
-      } else {
+      emailContact.addEventListener('mouseenter', function () {
+        var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
+        this.setAttribute('href', cleanEmail);
+      }, false);
+      emailContact.addEventListener('mouseleave', function () {
+        this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
+      }, false);
+      // else consider as touch interface
+      // } else {
 
-        emailContact.addEventListener('touchstart', function () {
-          var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
-          this.setAttribute('href', cleanEmail);
-        }, false);
-        emailContact.addEventListener('touchend', function () {
-          this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
-        }, false);
-      }
+      //   emailContact.addEventListener('touchstart', function () {
+      //     var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
+      //     this.setAttribute('href', cleanEmail);
+      //   }, false);
+      //   emailContact.addEventListener('touchend', function () {
+      //     this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
+      //   }, false);
+      // }
     } else {
       resumeDownload.classList.remove("animated", "fadeInRight", "slow");
       emailContact.classList.remove("animated", "fadeInLeft", "slow");
