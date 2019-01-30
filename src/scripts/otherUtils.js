@@ -94,13 +94,13 @@ document.addEventListener('DOMContentLoaded', function () {
       resumeDownload.classList.add("animated", "fadeInRight", "slow");
       emailContact.classList.add("animated", "fadeInLeft", "slow");
 
-      ['click', 'mouseenter', 'touchstart'].forEach(evt =>
+      ['click', 'mouseenter', 'touchstart', 'pointerover'].forEach(evt =>
         emailContact.addEventListener(evt, function () {
           var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
           this.setAttribute('href', cleanEmail);
         }, false));
 
-      ['blur', 'mouseleave', 'touchend'].forEach(evt =>
+      ['blur', 'mouseleave', 'touchend', 'pointerleave'].forEach(evt =>
         emailContact.addEventListener(evt, function () {
           this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
         }, false));
