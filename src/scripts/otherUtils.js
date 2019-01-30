@@ -108,11 +108,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // else consider as touch interface
       } else {
 
-        emailContact.addEventListener('mouseenter touchstart', function () {
+        emailContact.addEventListener('touchstart', function () {
           var cleanEmail = this.getAttribute('href').replace(/y|u|k/g, '');
           this.setAttribute('href', cleanEmail);
         }, false);
-        emailContact.addEventListener('mouseleave touchend', function () {
+        emailContact.addEventListener('touchend', function () {
           this.setAttribute('href', "mailto:ykykkuuayyyduuouuulfkkoyyy.uuupkkyykkeuuuuixiuyyyyukknuhyouyyy@uuuuyygyuyykkkmukkailyyykk.uyycykkokuymyyyyyyyy");
         }, false);
       }
