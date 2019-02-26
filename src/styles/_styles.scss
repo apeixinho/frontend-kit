@@ -348,7 +348,8 @@ header {
 
   .round {
     position: absolute;
-    top: 160px;
+    top: 9em;
+    // margin: 2em 1em .5em 1em;
     width: 219px;
     height: 219px;
     // border: 6px solid $blue;
@@ -357,8 +358,12 @@ header {
   }
 
   h2 {
+    position: absolute;
+    top: 7em;
     // margin: 24px 0;
-    padding: 0 40px;
+    // margin: 1em;
+    // padding: .5em;
+    // padding: 2em 1em;
     // font: bold 38px 'Open Sans', 'Quicksand', sans-serif, monospace;
     font: bold 4em 'Open Sans', sans-serif, monospace;
   }
@@ -392,12 +397,11 @@ header {
 }
 
 
-@media (max-height: 360px),
-(max-width: 640px) {
+@media (max-height: 320px),(max-width: 840px) {
   .hero {
     .round {
       position: absolute;
-      top: 40px;
+      top: 4em;
       width: 149px;
       height: 149px;
       border: 6px solid $white;
@@ -405,8 +409,10 @@ header {
     }
 
     h2 {
-      //margin: 16px 0;
-      padding: 0 30px;
+      position: absolute;
+      top: 8em;
+      // margin: 16px 0;
+      // padding: 0 30px;
       // font: bold 24px 'Open Sans', 'Quicksand', sans-serif, monospace;
       font: bold 1.8em 'Open Sans', sans-serif, monospace;
     }
