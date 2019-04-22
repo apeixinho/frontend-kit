@@ -26,7 +26,7 @@ const miniCssExtractPluginConfig = new MiniCssExtractPlugin({
 });
 
 const htmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  title: 'homepage',
+  title: 'Adolfo Peixinho portfolio website',
   template: './ejs/index.ejs',
   favicon: './images/favicon.ico',
   inject: true,
