@@ -397,7 +397,8 @@ header {
 }
 
 
-@media (max-height: 320px),(max-width: 840px) {
+@media (max-height: 320px),
+(max-width: 840px) {
   .hero {
     .round {
       position: absolute;
@@ -682,8 +683,7 @@ header {
     }
 
     div:first-of-type a {
-      padding: 18px 42px;
-      margin: 0 0 20px 0;
+      margin: 0 20px 20px 0;
     }
   }
 }
