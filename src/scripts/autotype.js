@@ -1,9 +1,10 @@
-var dataset = ["Hi, and welcome to my homepage.", "I'm a passionate full-stack developer"];
+var dataset = ["Hi, and welcome to my webpage.", "I'm a passionate full-stack developer.", "Always eager to learn about new technologies and paradigms."];
+
 var datasetIndex = 0;
 var data;
 var pause = 1400;
-var addTime = 150;
-var removeTime = 120;
+var addTime = 120;
+var removeTime = 55;
 var letterIndex = 0;
 var currentInterval;
 
