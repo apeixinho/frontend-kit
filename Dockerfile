@@ -17,6 +17,11 @@ RUN apk update && apk upgrade && \
 
 # ENV PATH=${PATH}:"$(yarn global bin)"
 
+# https://www.alpinelinux.org/posts/Docker-image-vulnerability-CVE-2019-5021.html
+# https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5021
+# make sure root login is disabled
+RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
+
 # add a group and user for our app, for a system user or group
 # add '-S' to addgroup or adduser commands
 RUN addgroup -S app && adduser -S -g app app
