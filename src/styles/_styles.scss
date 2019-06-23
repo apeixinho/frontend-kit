@@ -402,7 +402,7 @@ header {
   .hero {
     .round {
       position: absolute;
-      top: 4em;
+      top: 1.2em;
       width: 149px;
       height: 149px;
       border: 6px solid $white;
@@ -415,7 +415,7 @@ header {
       // margin: 16px 0;
       // padding: 0 30px;
       // font: bold 24px 'Open Sans', 'Quicksand', sans-serif, monospace;
-      font: bold 1.8em 'Open Sans', sans-serif, monospace;
+      font: bold 1.4em 'Open Sans', sans-serif, monospace;
     }
 
     .mouse {
@@ -425,7 +425,7 @@ header {
       height: 56px;
       border-radius: 13px;
       border: 2px solid $white;
-      bottom: 32px;
+      bottom: 12px;
       position: absolute;
       left: 50%;
       margin-left: -14px;
