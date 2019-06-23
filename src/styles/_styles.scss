@@ -395,7 +395,7 @@ header {
   }
 }
 
-@media (max-width: 461px), (max-height: 361px) {
+@media (max-width: 541px), (max-height: 881px) {
   .hero {
     .round {
       position: absolute;
@@ -412,7 +412,7 @@ header {
       // margin: 16px 0;
       // padding: 0 30px;
       // font: bold 24px 'Open Sans', 'Quicksand', sans-serif, monospace;
-      font: bold 1.4em "Open Sans", sans-serif, monospace;
+      font: bold 2em "Open Sans", sans-serif, monospace;
     }
 
     .mouse {
