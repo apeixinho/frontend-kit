@@ -73,12 +73,12 @@ hr {
   margin-bottom: 80px;
 }
 
-img {
-  min-width: auto;
-  max-width: auto;
-  min-height: auto;
-  max-height: auto;
-}
+// img {
+//   min-width: auto;
+//   max-width: auto;
+//   min-height: auto;
+//   max-height: auto;
+// }
 
 .caretAnimation {
   animation-name: caret;
@@ -357,14 +357,14 @@ header {
   }
 
   h2 {
-    position: absolute;
-    top: 7em;
-    // margin: 24px 0;
-    // margin: 1em;
+    // position: absolute;
+    // top: 7em;
+    // margin: 2em;
+    margin-top: 1em;
     // padding: .5em;
     // padding: 2em 1em;
     // font: bold 38px 'Open Sans', 'Quicksand', sans-serif, monospace;
-    font: bold 4em "Open Sans", sans-serif, monospace;
+    font: bold 64px "Open Sans", sans-serif, monospace;
   }
 
   .mouse {
@@ -407,12 +407,11 @@ header {
     }
 
     h2 {
-      position: absolute;
-      top: 8em;
+      // margin-top: 1em;
       // margin: 16px 0;
       // padding: 0 30px;
       // font: bold 24px 'Open Sans', 'Quicksand', sans-serif, monospace;
-      font: bold 2em "Open Sans", sans-serif, monospace;
+      font: bold 38px "Open Sans", sans-serif, monospace;
     }
 
     .mouse {

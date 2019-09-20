@@ -12,7 +12,7 @@ ENV NODE_ENV=production
 
 
 RUN apk update && apk upgrade && \
-  apk add --no-cache build-base git && \
+  # apk add --no-cache build-base git && \
   rm -f /var/cache/apk/*
 
 # ENV PATH=${PATH}:"$(yarn global bin)"
@@ -26,17 +26,15 @@ RUN sed -i -e 's/^root::/root:!:/' /etc/shadow
 # add '-S' to addgroup or adduser commands
 RUN addgroup -S app && adduser -S -g app app
 
-COPY . /home/app/site1
+COPY . /home/app/website
 
 RUN chown -R app:app /home/app
 
 USER app
 
-WORKDIR /home/app/site1
+WORKDIR /home/app/website
 
-RUN yarn
-
-RUN yarn run build:prod
+RUN npm i && npm run build:prod
 
 EXPOSE 10001
 
