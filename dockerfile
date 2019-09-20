@@ -13,6 +13,7 @@ ENV NODE_ENV=production
 
 RUN apk update && apk upgrade && \
   # apk add --no-cache build-base git && \
+  apk add --no-cache git && \
   rm -f /var/cache/apk/*
 
 # ENV PATH=${PATH}:"$(yarn global bin)"
